@@ -12,4 +12,13 @@
 
 **Credit Load Guidance**: Recommendations on optimal credit hours per semester. 
 
-**Prerequisite Tracking**: Ensure students follow the correct course sequence, aligning with prerequisite requirements. 
+**Prerequisite Tracking**: Ensure students follow the correct course sequence, aligning with prerequisite requirements.
+
+## Demo
+## Setup
+## Features
+## Teach Stack
+## Usage
+## Contribution
+## License
+## Contact & Credits
