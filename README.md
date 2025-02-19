@@ -17,7 +17,13 @@
 ## Demo
 ## Setup
 ## Features
-## Teach Stack
+* Customizable Course Plan: Modify the advising plan dynamically to reflect individual choices and prior credits.
+* Drag-and-Drop Interface: Users can easily move courses between semesters by dragging and dropping them, facilitating quick adjustments to their academic plans.
+* Course Availability Insights: Notes from senior students on course demand to help secure seats in popular classes.
+* Semester Offering Predictions: Estimate the likelihood of a course being available in summer or winter based on past catalogs.
+* Credit Load Guidance: Recommendations on optimal credit hours per semester.
+* Prerequisite Tracking: Ensure students follow the correct course sequence, aligning with prerequisite requirements.
+## Tech Stack
 * HTML (for structure)
 * CSS (Bootstrap)
 * JavaScript (React.js for reactivity, D3.js for visualization, jQuery UI for drag and drop)
