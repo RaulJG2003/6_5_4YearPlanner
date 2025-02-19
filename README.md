@@ -24,6 +24,9 @@ The tool will enhance academic planning without professor recommendations, leavi
 ## Usage
 ## Contribution
 Rusham Bhatt - UMBC Computer Science
+
 Boma Braide - UMBC Computer Science
+
 Raul Jorrin Garcia - UMBC Computer Science
+
 Michael Moore - UMBC Computer Science
