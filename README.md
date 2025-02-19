@@ -18,6 +18,10 @@
 ## Setup
 ## Features
 ## Teach Stack
+* HTML (for structure)
+* CSS (Bootstrap)
+* JavaScript (React.js for reactivity, D3.js for visualization, jQuery UI for drag and drop)
+* Backend (potentially Node.js with database like MongoDB)
 ## Usage
 ## Contribution
 ## License
