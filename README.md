@@ -23,5 +23,7 @@ The tool will enhance academic planning without professor recommendations, leavi
 * Backend (potentially Node.js with database like MongoDB)
 ## Usage
 ## Contribution
-## License
-## Contact & Credits
+Rusham Bhatt - UMBC Computer Science
+Boma Braide - UMBC Computer Science
+Raul Jorrin Garcia - UMBC Computer Science
+Michael Moore - UMBC Computer Science
