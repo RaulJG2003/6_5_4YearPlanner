@@ -29,6 +29,7 @@ function popJSON()
   })
 
 }
+//keeping just in case
 //const seedCourses = [
   //{ code: "CMSC 201", name: "Computer Science I", credits: 4, prerequisites: [], semesterOffered: ["Fall", "Spring"] },
   //{ code: "CMSC 202", name: "Computer Science II", credits: 4, prerequisites: ["CMSC 201"], semesterOffered: ["Spring", "Fall"] },
