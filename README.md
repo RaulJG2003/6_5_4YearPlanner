@@ -16,6 +16,14 @@ The tool will enhance academic planning without professor recommendations, leavi
 
 ## Demo
 ## Setup
+### Step 1: Download MongoDB
+### Step 2: Download Node.js
+### Step 3: Download Git (if necessary)
+### Step 3: Clone GitHub Repository
+### Step 4: How to view website with preliminary data
+* In the GitHub repository, in the ```/server``` folder type the following command: ```node server.js```. This will initiate the backend. You should see a ```MongoDb connected...``` message.
+* Afterwards, navigate to the ```/server/scripts``` folder, and type in the command ```node seed.js```. This will seed the database with data that can be used in the frontend.
+* Finally, type ```http://localhost:5000``` on a browser and hit enter. You should see the website, quite barebones.
 ## Tech Stack
 * HTML (for structure)
 * CSS (Bootstrap)
