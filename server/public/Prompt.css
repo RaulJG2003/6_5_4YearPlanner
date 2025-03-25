@@ -1,0 +1,107 @@
+
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+}
+
+/* Fixed Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+#umbc-logo {
+    max-width: 250px; /* Prevents it from being too large */
+    height: auto;
+}
+
+/* Table Styling */
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Header Text */
+h1 {
+    text-align: center;
+    font-size: 45px;
+    padding-top: 60px;
+    color: black;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #555;
+}
+
+/* Button Container (for better alignment) */
+.button-container {
+    display: flex;
+    gap: 30px; /* Spacing between buttons */
+    margin-right: 20px;
+}
+
+/* About Button */
+#About-btn {
+    margin-left: auto;
+}
+
+/* Contact Button */
+#contact-btn {
+    margin-left: auto;
+}
+
+#prompt_questions {
+    font-size: 25px;
+}
+
+
+select {
+    padding: 12px; /* Increase padding */
+    font-size: 18px; /* Make text bigger */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #ccc; /* Add a border */
+    background-color: white; /* Set background color */
+}
+
+input[type="text"] {
+    padding: 12px; /* Increase padding */
+    font-size: 18px; /* Make text bigger */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #ccc; /* Add a border */
+    background-color: white; /* Set background color */
+    box-sizing: border-box; /* Prevent width issues */
+}

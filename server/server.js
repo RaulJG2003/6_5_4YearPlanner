@@ -9,6 +9,10 @@ app.use(express.json());
 
 connectDB(); // Connect to MongoDb
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "Prompt.html")); 
+});
+
 // Serve static HTML from 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
