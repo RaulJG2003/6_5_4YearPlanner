@@ -23,7 +23,7 @@ The tool will enhance academic planning without professor recommendations, leavi
 ### Step 3: Download Git (if necessary)
 [Link to download git for Windows](https://git-scm.com/downloads/win)
 ### Step 3: Clone GitHub Repository
-Once you have Git installed, navigate to a local folder location where you want the local repository to be stored and type, ```git clone https://github.com/RaulJG2003/6_5_4YearPlanner.git```. This should clone the repository to allow for local development in your computer. If the repository name has changed, clone the repository using the respective changed name.
+Once you have Git installed, navigate to a local folder location (via command prompt or terminal) where you want the local repository to be stored and type, ```git clone https://github.com/RaulJG2003/6_5_4YearPlanner.git```. This should clone the repository to allow for local development in your computer. If the repository name has changed, clone the repository using the respective changed name.
 ### Step 4: How to view website with preliminary data
 * In the GitHub repository, in the ```/server``` folder type the following command: ```node server.js```. This will initiate the backend. You should see a ```MongoDb connected...``` message.
 * Afterwards, navigate to the ```/server/scripts``` folder, and type in the command ```node seed.js```. This will seed the database with data that can be used in the frontend.
