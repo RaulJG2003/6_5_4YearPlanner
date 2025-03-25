@@ -30,7 +30,8 @@ Once you have Git installed, navigate to a local folder location (via command pr
 * Finally, type ```http://localhost:5000``` on a browser and hit enter. You should see the website, quite barebones.
 ### Debugging:
 #### MongoDB Cluster and IP Address issue
-If MongoDB does not connect after running ```node server.js```, and a message shows up that mentions whitelisting your ip address, this means that your ip address neeeds to be added to the MongoDB Cluster we have created for this project. To do this navigate to [Cloud MongoDB website here](cloud.mongodb.com), and be sure that you are in our ```StudentData``` cluster. On the left, under ```Security``` click on ```Network Access```. You should immediately see your IP Address show up, and on the right, click on ```Add IP Address```. You should now repeat **Step 4** from above.
+If MongoDB does not connect after running ```node server.js```, and a message shows up that mentions whitelisting your ip address, this means that your ip address neeeds to be added to the MongoDB Cluster we have created for this project. To do this navigate to 
+[Cloud MongoDB website here](https://account.mongodb.com/account/login) and be sure that you are in our ```StudentData``` cluster. On the left, under ```Security``` click on ```Network Access```. You should immediately see your IP Address show up, and on the right, click on ```Add IP Address```. You should now repeat **Step 4** from above.
 ## Tech Stack
 * HTML (for structure)
 * CSS (Bootstrap)
