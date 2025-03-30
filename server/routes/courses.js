@@ -22,4 +22,20 @@ router.get("/:courseCode/prerequisites", async (req, res) => {
   }
 });
 
+// Search courses by name or code
+router.get("/search", async (req, res) => {
+  try {
+    const query = req.query.query;
+    const courses = await Course.find({
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { code: { $regex: query, $options: "i" } }
+      ]
+    });
+    res.json(courses);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

@@ -7,71 +7,80 @@
     <link rel="stylesheet" href="Prompt.css">
 </head>
 <body>
+
+    <!-- Fixed Header -->
     <header>
-        <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
-        <button id="About-btn">About</button>
-        <button id="Contact-btn">Contact</button>
+        <div class="header-left">
+            <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
+            <div class="top-right-buttons">
+                <button id="About-btn">About</button>
+                <button id="Contact-btn">Contact</button>
+            </div>
+        </div>
     </header>
     <h1>COEIT Four-Year Planner</h1>
-    <!-- Ask for the users year-->
-    <body id="prompt_questions">
-    <p>
-        <label for="Year_label">What year are you?</label>
-        <select id="Year">
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-        </select>
-    </p>
-    <!--Ask for the users semester-->
-    <p>
-        <label for="Semester_label">What semester are you in?</label>
-        <select id="Semester">
-            <option value="Fall">Fall</option>
-            <option value="Winter">Winter</option>
-            <option value="Spring">Spring</option>
-            <option value="Summer">Summer</option>
-        </select>
-    </p>
-
-    <!--Ask for the users Major-->
-    <p>
-        <label for="Major_label">What major are you?</label>
-        <select id="Major">
-            <option value="BTA">Business Technology Administration</option>
-            <option value="CHEME">Chemical Engineering</option>
-            <option value="COMPE">Computer Engineering</option>
-            <option value="COMPSCI">Computer Science</option>
-            <option value="IS">Information Systems</option>
-            <option value="MECHE">Mechanical Engineering</option>
-        </select>
-    </p>
-    <!--Ask for the users minor if they have one-->
-    <p>
-        <label for="Minor_label">Do you have a minor?</label>
-        <select id="Minor">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
-    </p>
+    <div class="container">
+        <div class="left">
+            <p>
+                <select id="Year">
+                    <option value="" hidden style="color:grey">What year are you?</option>
+                    <option value="Freshman">Freshman</option>
+                    <option value="Sophomore">Sophomore</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+            </p>
+            <p>
+                <select id="Semester">
+                    <option value="" hidden style="color:grey">What semester are you in currently?</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                </select>
+            </p>
+            <p>
+                <select id="Major">
+                    <option value="" hidden style="color:grey">What major are you?</option>
+                    <option value="BTA">Business Technology Administration</option>
+                    <option value="CHEME">Chemical Engineering</option>
+                    <option value="COMPE">Computer Engineering</option>
+                    <option value="COMPSCI">Computer Science</option>
+                    <option value="IS">Information Systems</option>
+                    <option value="MECHE">Mechanical Engineering</option>
+                </select>
+            </p>
+            <p>
+                <select id="Minor">
+                    <option value="" hidden style="color:grey">Do you have a minor?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </p>
+            <p>
+                <!-- Action Buttons -->
+                <div class="bottom-buttons">
+                    <button id="submit-btn" onclick="navigateToPage('index.html')">Generate Planner!</button>
+                    <button id="reset-btn" onclick="navigateToPage('Prompt.html')">Reset Entries</button>
+                </div>
+            </p>
+        </div>
     
-    <div class="credits_taken">
-        <label>Please enter the number of credits you have taken already: </label>
-        <input type="text" id="credits" placeholder="Type your credits here...">
-    
-        <!-- Display Output -->
-        <p id="output"></p>
+        <div class="right">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for items...">
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results"></div>
+        </div>
     </div>
-    <p>Please enter courses you have taken (placeholder)</p>
-    </body>
-    <button id="submit-btn" onclick="navigateToPage('index.html')">Generate Planner</button>
-    <button id="Reset-btn">Reset Entries</button>
+
+    <script src="search.js"></script>
+    <script>
+        function navigateToPage(page) {
+            window.location.href = page; // Redirect to the specified page
+        }
+    </script>
+
 </body>
 </html>
-
-<script>
-function navigateToPage(page) {
-    window.location.href = page; // Redirect to the specified page
-}
-</script>
