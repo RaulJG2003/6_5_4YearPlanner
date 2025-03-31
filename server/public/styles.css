@@ -61,3 +61,70 @@ h1 {
 main {
     padding-top: 80px; /* Add padding to push content down below the fixed header */
 }
+
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Sidebar (Course List) */
+#course-list {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#courses {
+    list-style: none;
+    padding: 0;
+}
+
+.course {
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    margin: 5px;
+    cursor: grab;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Semester Table */
+#semester-container {
+    flex-grow: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.years {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.year {
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.semester {
+    height: 150px;
+    background: #ddd;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.semester:hover {
+    background: #ccc;
+}

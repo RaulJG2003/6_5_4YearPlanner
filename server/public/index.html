@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COEIT 4 Year Plan</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,25 +13,48 @@
         <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
         
         <!-- Contact Button -->
-
         <button id="Contact-btn">Contact</button>
 
     </header>
     <h1>COEIT Course Planner</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Course Code</th>
-                <th>Course Name</th>
-                <th>Credits</th>
-                <th>Prerequisites</th>
-                <th>Semesters Offered</th>
-            </tr>
-        </thead>
-        <tbody id="course-table">
-            <!-- Courses will be inserted here -->
-        </tbody>
-    </table>
+
+    <div class="container">
+        <!-- Sidebar for draggable courses -->
+        <div id="course-list">
+            <h2> Available Courses</h2>
+            <ul id="courses">
+                <!-- Courses will be dynamically added here-->
+            </ul>
+        </div>
+
+        <!-- 4-Year Plan (8 Semesters) -->
+        <div id="semester-container">
+            <h2>4-Year Plan</h2>
+            <div class="years">
+                <!-- Creating 4 years with 2 semesters each -->
+                <div class="year">
+                    <h3>Year 1</h3>
+                    <div class="semester" id="semester-1">Fall</div>
+                    <div class="semester" id="semester-2">Spring</div>
+                </div>
+                <div class="year">
+                    <h3>Year 2</h3>
+                    <div class="semester" id="semester-3">Fall</div>
+                    <div class="semester" id="semester-4">Spring</div>
+                </div>
+                <div class="year">
+                    <h3>Year 3</h3>
+                    <div class="semester" id="semester-5">Fall</div>
+                    <div class="semester" id="semester-6">Spring</div>
+                </div>
+                <div class="year">
+                    <h3>Year 4</h3>
+                    <div class="semester" id="semester-7">Fall</div>
+                    <div class="semester" id="semester-8">Spring</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
