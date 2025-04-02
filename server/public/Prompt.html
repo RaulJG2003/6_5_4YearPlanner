@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Plain black header with UMBC logo and about and contact buttons-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,6 @@
     <link rel="stylesheet" href="Prompt.css">
 </head>
 <body>
-
-    <!-- Fixed Header -->
     <header>
         <div class="header-left">
             <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
@@ -20,6 +19,8 @@
     </header>
     <h1>COEIT Four-Year Planner</h1>
     <div class="container">
+        <!--Splits the screen. Left side is getting information from the user, the right side
+        is displaying the class search results-->
         <div class="left">
             <p>
                 <select id="Year">
@@ -58,6 +59,11 @@
                 </select>
             </p>
             <p>
+                <form id="credits-taken">
+                    <input type="text" id="credits-input" placeholder="Input the number of credits taken...">
+                </form>
+            </p>
+            <p>
                 <!-- Action Buttons -->
                 <div class="bottom-buttons">
                     <button id="submit-btn" onclick="navigateToPage('index.html')">Generate Planner!</button>
@@ -72,16 +78,17 @@
                 <button type="submit">Search</button>
             </form>
             
-            <!-- Search results will be dynamically added here -->
+            <!-- Search results will be displayed here-->
             <div id="search-results"></div>
             
-            <!-- Display Selected Courses -->
+            <!-- Display Selected Courses, will be implemented later -->
             <h3>Selected Courses:</h3>
-            <ul id="selected-courses"></ul>
+            <div id="selected-courses">No courses selected</div>
+            <!--<button id="debug-btn">Debug (prints to console)</button>-->
         </div>
     </div>
 
-    <script src="search.js"></script>
+    <!--Short script to move to the next page with the submit button-->
     <script>
         function navigateToPage(page) {
             window.location.href = page; // Redirect to the specified page
@@ -89,4 +96,5 @@
     </script>
 
 </body>
+<script src="search.js"></script>
 </html>
