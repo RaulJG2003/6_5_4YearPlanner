@@ -23,14 +23,17 @@ The tool will enhance academic planning without professor recommendations, leavi
 ### Step 3: Download Git (if necessary)
 [Link to download git for Windows](https://git-scm.com/downloads/win)
 ### Step 3: Clone GitHub Repository
-Once you have Git installed, navigate to a local folder location where you want the local repository to be stored and type, ```git clone https://github.com/RaulJG2003/6_5_4YearPlanner.git```. This should clone the repository to allow for local development in your computer. If the repository name has changed, clone the repository using the respective changed name.
+Once you have Git installed, navigate to a local folder location (via command prompt or terminal) where you want the local repository to be stored and type, ```git clone https://github.com/RaulJG2003/6_5_4YearPlanner.git```. This should clone the repository to allow for local development in your computer. If the repository name has changed, clone the repository using the respective changed name.
 ### Step 4: How to view website with preliminary data
 * In the GitHub repository, in the ```/server``` folder type the following command: ```node server.js```. This will initiate the backend. You should see a ```MongoDb connected...``` message.
 * Afterwards, navigate to the ```/server/scripts``` folder, and type in the command ```node seed.js```. This will seed the database with data that can be used in the frontend.
 * Finally, type ```http://localhost:5000``` on a browser and hit enter. You should see the website, quite barebones.
 ### Debugging:
 #### MongoDB Cluster and IP Address issue
-If MongoDB does not connect after running ```node server.js```, and a message shows up that mentions whitelisting your ip address, this means that your ip address neeeds to be added to the MongoDB Cluster we have created for this project. To do this navigate to [Cloud MongoDB website here](cloud.mongodb.com), and be sure that you are in our ```StudentData``` cluster. On the left, under ```Security``` click on ```Network Access```. You should immediately see your IP Address show up, and on the right, click on ```Add IP Address```. You should now repeat **Step 4** from above.
+If MongoDB does not connect after running ```node server.js```, and a message shows up that mentions whitelisting your ip address, this means that your ip address neeeds to be added to the MongoDB Cluster we have created for this project. To do this navigate to 
+[Cloud MongoDB website here](https://account.mongodb.com/account/login) and be sure that you are in our ```StudentData``` cluster. On the left, under ```Security``` click on ```Network Access```. You should immediately see your IP Address show up, and on the right, click on ```Add IP Address```. You should now repeat **Step 4** from above.
+#### CSV to Json Error When Running seed.js
+If you are receiving a ```no module error``` for ```csvtojson``` you will need to install it. To install it, simply go to the root folder of your local repository and type ```npm install csvtojson```.
 ## Tech Stack
 * HTML (for structure)
 * CSS (Bootstrap)
