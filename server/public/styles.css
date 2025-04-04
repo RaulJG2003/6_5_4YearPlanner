@@ -37,6 +37,7 @@ th {
 
 h1 {
     color: blue;
+    line-height: 2;
 }
 
 #umbc-logo {
@@ -74,6 +75,8 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    outline-style: solid;
+    outline-width: 5px;
 }
 
 #courses {
@@ -98,6 +101,8 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    outline-style: solid;
+    outline-width: 5px;
 }
 
 .years {
