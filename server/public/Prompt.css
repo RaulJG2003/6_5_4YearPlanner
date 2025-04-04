@@ -1,0 +1,245 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    background-color: #f4f4f4;
+    text-align: left;
+    margin: 0;
+    padding: 10px;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+#search-form {
+    width: 100%;
+    display: flex;
+    align-items: left;
+    gap: 10px; 
+}
+
+
+#search-input {
+    width: 100%;
+    padding: 12px; 
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: white;
+}
+
+
+#search-form button {
+    padding: 12px 15px; 
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: gold;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+
+#search-form button:hover {
+    background-color: #555;
+}
+
+
+#umbc-logo {
+    max-width: 250px;
+    height: auto;
+}
+
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.top-right-buttons {
+    position: absolute;
+    top: 15px; 
+    right: 20px; 
+    display: flex;
+    gap: 10px; 
+}
+
+
+.top-right-buttons button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+
+.top-right-buttons button:hover {
+    background-color: #aaa209;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    padding-top: 100px;
+    color: black;
+    padding-bottom: 50px;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+
+button:hover {
+    background-color: #aaa209;
+}
+
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+select, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+
+.input-container {
+    display: flex;
+    gap: 20px; 
+}
+
+
+.input-container input {
+    flex: 1; 
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: white;
+}
+
+
+#search-results {
+    margin-top: 30px; 
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 300px; 
+    overflow-y: auto; 
+}
+
+
+#search-results div {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+
+#search-results strong {
+    color: #38773a; 
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row; 
+    gap: 20px; 
+    align-items: flex-start; 
+    justify-content: center; 
+}
+
+
+.left, .right {
+    flex-direction: column;
+    text-align: left;
+    width: 90%; 
+    padding: 30px;
+    background-color: #e0f7fa; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.left {
+    background-color: black;
+}
+
+
+.right {
+    background-color: black;
+}
+
+
+.bottom-buttons {
+    text-align: center;
+}
+
+
+h3 {
+    color: white;
+}
+
+
+#selected-courses {
+    margin-top: 30px; 
+    padding: 5px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 300px; 
+    overflow-y: auto; 
+    font-size: 20px;
+}

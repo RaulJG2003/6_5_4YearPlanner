@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Plain black header with UMBC logo and about and contact buttons-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COEIT 4 Year Plan</title>
+    <link rel="stylesheet" href="Prompt.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
+            <div class="top-right-buttons">
+                <button id="About-btn">About</button>
+                <button id="Contact-btn">Contact</button>
+            </div>
+        </div>
+    </header>
+    <h1>COEIT Four-Year Planner</h1>
+    <div class="container">
+        <!--Splits the screen. Left side is getting information from the user, the right side
+        is displaying the class search results-->
+        <div class="left">
+            <p>
+                <select id="Year">
+                    <option value="" hidden style="color:grey">What year are you?</option>
+                    <option value="Freshman">Freshman</option>
+                    <option value="Sophomore">Sophomore</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+            </p>
+            <p>
+                <select id="Semester">
+                    <option value="" hidden style="color:grey">What semester are you in currently?</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                </select>
+            </p>
+            <p>
+                <select id="Major">
+                    <option value="" hidden style="color:grey">What major are you?</option>
+                    <option value="BTA">Business Technology Administration</option>
+                    <option value="CHEME">Chemical Engineering</option>
+                    <option value="COMPE">Computer Engineering</option>
+                    <option value="COMPSCI">Computer Science</option>
+                    <option value="IS">Information Systems</option>
+                    <option value="MECHE">Mechanical Engineering</option>
+                </select>
+            </p>
+            <p>
+                <select id="Minor">
+                    <option value="" hidden style="color:grey">Do you have a minor?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </p>
+            <p>
+                <form id="credits-taken">
+                    <input type="text" id="credits-input" placeholder="Input the number of credits taken...">
+                </form>
+            </p>
+            <p>
+                <!-- Action Buttons -->
+                <div class="bottom-buttons">
+                    <button id="submit-btn" onclick="navigateToPage('index.html')">Generate Planner!</button>
+                    <button id="reset-btn" onclick="navigateToPage('Prompt.html')">Reset Entries</button>
+                </div>
+            </p>
+        </div>
+    
+        <div class="right">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for courses...">
+                <button type="submit">Search</button>
+            </form>
+            
+            <!-- Search results will be displayed here-->
+            <div id="search-results"></div>
+            
+            <!-- Display Selected Courses, will be implemented later -->
+            <h3>Selected Courses:</h3>
+            <div id="selected-courses">No courses selected</div>
+            <!--<button id="debug-btn">Debug (prints to console)</button>-->
+        </div>
+    </div>
+
+    <!--Short script to move to the next page with the submit button-->
+    <script>
+        function navigateToPage(page) {
+            window.location.href = page; // Redirect to the specified page
+        }
+    </script>
+
+</body>
+<script src="search.js"></script>
+</html>
