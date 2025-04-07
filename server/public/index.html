@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +9,28 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
-        
+
         <!-- Contact Button -->
         <button id="Contact-btn">Contact</button>
 
     </header>
     <h1>COEIT Course Planner</h1>
 
+    <!-- Course Info Buttons and Dropdowns -->
+    
+
     <div class="container">
         <!-- Sidebar for draggable courses -->
         <div id="course-list">
             <h2> Available Courses</h2>
-            <ul id="courses">
-                <!-- Courses will be dynamically added here-->
+            <ul id="course-buttons">
+                <!-- Buttons and dropdowns will be injected here -->
             </ul>
         </div>
-
         <!-- 4-Year Plan (8 Semesters) -->
         <div id="semester-container">
             <h2>4-Year Plan</h2>
@@ -34,22 +38,30 @@
                 <!-- Creating 4 years with 2 semesters each -->
                 <div class="year">
                     <h3>Year 1</h3>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-1">Fall</div>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-2">Spring</div>
                 </div>
                 <div class="year">
                     <h3>Year 2</h3>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-3">Fall</div>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-4">Spring</div>
                 </div>
                 <div class="year">
                     <h3>Year 3</h3>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-5">Fall</div>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-6">Spring</div>
                 </div>
                 <div class="year">
                     <h3>Year 4</h3>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-7">Fall</div>
+                    <span class="credit-total">Credits: 0</span> <!-- Credit total will appear here -->
                     <div class="semester" id="semester-8">Spring</div>
                 </div>
             </div>
@@ -58,4 +70,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

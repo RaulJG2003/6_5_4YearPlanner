@@ -133,3 +133,62 @@ h3 {
 .semester:hover {
     background: #ccc;
 }
+
+/* Style for the buttons */
+.course-button {
+    cursor: grab;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    margin: 5px;
+    cursor: grab;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Dropdown container (Initially hidden) */
+.dropdown-content {
+    display: none;
+    margin-top: 0px;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #bebaba;
+    width: 400px;
+    text-align: left;
+}
+
+/* Center the text inside the dropdown */
+.dropdown-content {
+    text-align: left; /* Center align text inside the dropdown */
+}
+
+/* Style for the button container */
+.class-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.course-button::after {
+    content: '►';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.course-button.active::after {
+    content: '▼';
+}
+
+/* When dropdown is visible, show it */
+.show {
+    display: block;
+}
+#course-buttons .class-container {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+}
+
+#course-buttons {
+    margin-bottom: 30px;
+}
