@@ -192,3 +192,8 @@ h3 {
 #course-buttons {
     margin-bottom: 30px;
 }
+
+#search-input {
+    font-size: 20px;
+    width: 95%;
+}

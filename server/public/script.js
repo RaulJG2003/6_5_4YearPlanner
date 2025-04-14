@@ -1,13 +1,21 @@
-$(document).ready(() => {
-    $.get("/api/courses", (courses) => {
-        const buttonContainer = $("#course-buttons");
+let allCourses = [];
 
-        courses.forEach((course, index) => {
-            // --- Create draggable button with dropdown ---
+$.get("/api/courses", function (data) {
+    allCourses = data;
+    renderCourses(allCourses); // Optionally render all at the start
+});
+
+$(document).ready(() => {
+    const buttonContainer = $("#course-buttons");
+
+    // Puts the course rendering into a function so that it can be used in different ways
+    function renderCourses(courseList) {
+        buttonContainer.empty();
+
+        courseList.forEach((course, index) => {
             const button = $(`<div class="course-button" data-code="${course.code}" data-credits="${course.credits}">`)
                 .text(`${course.code} - ${course.name}`)
-                .click(function (e) {
-                    // Prevent drag from triggering click
+                .click(function () {
                     if (!$(this).hasClass("dragging")) {
                         $(`#dropdown-${index}`).toggle();
                         $(this).toggleClass('active');
@@ -28,7 +36,6 @@ $(document).ready(() => {
             classContainer.append(button).append(dropdown);
             buttonContainer.append(classContainer);
 
-            // Make the whole classContainer draggable
             classContainer.draggable({
                 helper: "clone",
                 revert: "invalid",
@@ -40,6 +47,30 @@ $(document).ready(() => {
                 }
             });
         });
+        if (courseList.length === 0) {
+            buttonContainer.html("<p>No courses found.</p>");
+            return;
+        }
+    }
+
+    $("#search-input").on("input", function () {
+        const query = $(this).val().toLowerCase().trim();
+    
+        // Get all currently used course codes
+        const usedCodes = new Set();
+        $(".semester .course-button").each(function () {
+            usedCodes.add($(this).data("code"));
+        });
+    
+        // Filter out used courses from search
+        const filteredCourses = allCourses.filter(course =>
+            !usedCodes.has(course.code) && (
+                course.code.toLowerCase().includes(query) ||
+                course.name.toLowerCase().includes(query)
+            )
+        );
+    
+        renderCourses(filteredCourses);
     });
 
     function updateCreditsForSemester(semesterDiv) {
