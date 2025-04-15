@@ -1,5 +1,44 @@
 <!DOCTYPE html>
-<header> 
-    <label>Contact us!</label>
-</header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+          <img src="UMBC-primary-logo-RGB.png" alt="UMBC Logo" id="umbc-logo">
+        </div>
+        <div class="top-right-buttons">
+          <button id="About-btn" onclick="navigateToPage('about.html')">About</button>
+          <button id="Contact-btn" onclick="navigateToPage('prompt.html')">Back to Planner</button>
+        </div>
+      </header>
+
+    <h1>Contact Us!</h1>
+
+    <div class="form-center">
+        <input type="text" id="name-input" placeholder="Full Name...">
+        <input type="text" id="email-input" placeholder="Email...">
+        <input type="text" id="subject-input" placeholder="Subject...">
+        <textarea id="message-input" placeholder="Write your message here..."></textarea>
+    </div>
+
+    <div class="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://coeit.umbc.edu/">COEIT Advising Website</a></li>
+            <li><a href="https://my.umbc.edu/">MyUMBC</a></li>
+            <li><a href="https://apstudents.collegeboard.org/getting-credit-placement/search-policies">AP Course Equivalency Website</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function navigateToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
 </html>
