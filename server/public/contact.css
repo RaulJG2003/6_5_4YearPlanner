@@ -49,6 +49,17 @@ header {
     background-color: #bfa100;
 }
 
+button {
+    padding: 10px 20px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
 h1 {
     margin-top: 130px;
     text-align: center;
