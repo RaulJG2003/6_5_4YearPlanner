@@ -19,6 +19,16 @@ header {
     z-index: 10;
 }
 
+.header-title{
+    flex-grow: 1;
+    text-align: center;
+}
+
+#main-header{
+    color: #ccc;
+    margin: 0;
+}
+
 table {
     width: 80%;
     margin: auto;
@@ -78,6 +88,7 @@ main {
 }
 
 .container {
+    margin-top: 50px;
     display: flex;
     gap: 30px;
 }
@@ -119,6 +130,17 @@ main {
     outline-width: 5px;
 }
 
+#semester-container h2{
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    outline-style: solid;
+    outline-width: 5px;
+    flex-grow: 1;
+    background: gold;
+}
+
 .years {
     display: flex;
     flex-wrap: wrap;
@@ -134,10 +156,17 @@ h3 {
     text-align: center;
 }
 
+.semester-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px; /* space between box and label */
+    margin: 10px 0;
+}
+
 .semester {
+    flex: 1;
     height: 150px;
     background: #ddd;
-    margin: 10px;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -146,6 +175,27 @@ h3 {
 
 .semester:hover {
     background: #ccc;
+}
+
+.semester-block {
+    margin-bottom: 20px;
+}
+
+.semester-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px 5px 10px;
+    font-weight: bold;
+}
+
+.semester-label {
+    font-size: 16px;
+    color: #333;
+}
+
+.credit-total {
+    font-size: 16px;
 }
 
 /* Style for the buttons */
@@ -210,4 +260,11 @@ h3 {
 #search-input {
     font-size: 20px;
     width: 95%;
+}
+
+.error-msg {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
 }

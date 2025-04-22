@@ -83,10 +83,32 @@ $(document).ready(() => {
         });
     
         // Update the span that appears BEFORE the semester div
-        const creditSpan = semesterDiv.prev(".credit-total");
+        const creditSpan = semesterDiv.closest(".semester-block").find(".credit-total");
         if (creditSpan.length) {
             creditSpan.text("Credits: " + total);
         }
+    }
+
+    function prerequisitesMet(course, semesterId){
+        
+        if (!course || !Array.isArray(course.prerequisites)) return true;
+
+        // If no prerequisites or only empty strings, it's considered met
+        const filteredPrereqs = course.prerequisites.filter(p => p.trim() !== "");
+        if (filteredPrereqs.length === 0) return true;
+        
+        const currentSemesterIndex = parseInt(semesterId.split('-')[1]);
+
+        // Gather all the courses from semesters before the current one
+        let takenCourses = new Set();
+        for (let i = 1; i < currentSemesterIndex; i++){
+            $(`#semester-${i} .course-button`).each(function () {
+                takenCourses.add($(this).data("code"));
+            });
+        }
+
+        // Check if all prerequisites are in takenCourses
+        return course.prerequisites.every(prereq => takenCourses.has(prereq));
     }
 
     // Make semesters droppable
@@ -137,8 +159,24 @@ $(document).ready(() => {
                 $(this).find(`[data-code='${code}']`).closest(".class-container").remove();
                 updateCreditsForSemester($(this));
             });
+
+            // Check if prerequisites are met
+            const courseObj = allCourses.find(c => c.code === code);
+            if (!prerequisitesMet(courseObj, semester.attr("id"))) {
+                original.find(".course-button").css("background-color", "#f44336"); // red
+                if (!original.find(".error-msg").length) {
+                    original.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
+                }
+
+            }
+            
+            else {
+                original.find(".course-button").css("background-color", "gold");
+                original.find(".error-msg").remove();
+            }
+            
             // Append to semester
-            $(this).append(original);
+            semester.append(original);
             updateCreditsForSemester(semester);
         }
     });
@@ -176,6 +214,24 @@ $(document).ready(() => {
         // Remove from semester
         classContainer.remove();
         updateCreditsForSemester(semesterDiv);
+        // Re-check all semesters for errors after removal
+        $(".semester .class-container").each(function () {
+            const container = $(this);
+            const button = container.find(".course-button");
+            const code = button.data("code");
+            const semesterDiv = container.closest(".semester");
+            const courseObj = allCourses.find(c => c.code === code);
+
+            if (!prerequisitesMet(courseObj, semesterDiv.attr("id"))) {
+                button.css("background-color", "#f44336");
+                if (!container.find(".error-msg").length) {
+                    container.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
+                }
+            } else {
+                button.css("background-color", "gold");
+                container.find(".error-msg").remove();
+            }
+        });
     });
 });
 
