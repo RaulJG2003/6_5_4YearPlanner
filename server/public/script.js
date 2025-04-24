@@ -116,27 +116,54 @@ $(document).ready(() => {
         accept: ".class-container",
         drop: function (event, ui) {
             const semester = $(this);
-            const original = ui.helper.clone();
+            const original = ui.draggable;
             const button = original.find(".course-button");
             const code = button.data("code");
-
-            // Prevent duplicates (if needed)
-            if ($(this).find(`[data-code='${code}']`).length) return;
-
-            // Add "X" remove button if not already added
+        
+            // Prevent duplicates by checking if it already exists in the semester
+            if (semester.find(`[data-code='${code}']`).length) return;
+        
+            // Remove from course offered section if it was already there
+            $(`#course-buttons .class-container:has([data-code='${code}'])`).remove();
+        
+            // If there was a previous semester, remove it from that semester
+            const prevSemester = ui.helper.closest(".semester");
+            if (prevSemester.length) {
+                prevSemester.find(`.class-container:has([data-code='${code}'])`).remove();
+            }
+        
+            // Check if prerequisites are met
+            const courseObj = allCourses.find(c => c.code === code);
+            if (!prerequisitesMet(courseObj, semester.attr("id"))) {
+                original.find(".course-button").css("background-color", "#f44336"); // red
+                if (!original.find(".error-msg").length) {
+                    original.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
+                }
+            } else {
+                original.find(".course-button").css("background-color", "gold");
+                original.find(".error-msg").remove();
+            }
+        
+            // Add the "X" remove button only if it hasn't been added yet
             if (!button.find(".remove-course").length) {
                 button.append(` <button class="remove-course">X</button>`);
             }
-
-            // Re-bind the dropdown toggle click
-            button.off("click").on("click", function (e) {
+        
+            // Bind the remove button functionality
+            button.find(".remove-course").on("click", function () {
+                original.remove();
+                updateCreditsForSemester(semester);
+            });
+        
+            // Re-bind the dropdown toggle click functionality
+            button.off("click").on("click", function () {
                 if (!$(this).hasClass("dragging")) {
                     $(this).toggleClass("active");
                     $(this).siblings(".dropdown-content").toggle();
                 }
             });
-
-            // Re-apply draggable on the dropped container
+        
+            // Reapply draggable only to the new element (if necessary)
             original.draggable({
                 helper: "clone",
                 revert: "invalid",
@@ -147,38 +174,13 @@ $(document).ready(() => {
                     button.removeClass("dragging");
                 }
             });
-            //deletes it from course offered
-            $(`#course-buttons .class-container:has([data-code='${code}'])`).remove();
-            // this checks if we are dragging it from our current semester
-            const prevSemester = ui.helper.closest(".semester");
-            if (prevSemester.length) {
-                prevSemester.find(`.class-container:has([data-code='${code}'])`).remove();
-            }
-
-            $(".semester").each(function () {
-                $(this).find(`[data-code='${code}']`).closest(".class-container").remove();
-                updateCreditsForSemester($(this));
-            });
-
-            // Check if prerequisites are met
-            const courseObj = allCourses.find(c => c.code === code);
-            if (!prerequisitesMet(courseObj, semester.attr("id"))) {
-                original.find(".course-button").css("background-color", "#f44336"); // red
-                if (!original.find(".error-msg").length) {
-                    original.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
-                }
-
-            }
-            
-            else {
-                original.find(".course-button").css("background-color", "gold");
-                original.find(".error-msg").remove();
-            }
-            
-            // Append to semester
+        
+            // Append the cloned element to the semester
             semester.append(original);
+        
+            // Update credit totals for the semester
             updateCreditsForSemester(semester);
-        }
+        }        
     });
 
     // Optional: Handle "X" button to remove course
