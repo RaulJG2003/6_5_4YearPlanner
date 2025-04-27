@@ -87,6 +87,23 @@ $(document).ready(() => {
         if (creditSpan.length) {
             creditSpan.text("Credits: " + total);
         }
+
+        // If the user goes over 19 credits a warning message will come up
+        const warningDiv = semesterDiv.closest(".semester-block").find(".credit-warning");
+        if (total > 15) {
+            if (warningDiv.length === 0) {
+                semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: gold;">Warning: More than 15 credits a semester is not recommended!</div>');
+            }
+        } else {
+            warningDiv.remove();
+        }
+        if (total > 19) {
+            if (warningDiv.length === 0) {
+                semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: red;">Warning: More than 19 credits is only allowed with special permission!credits!</div>');
+            }
+        } else {
+            warningDiv.remove();
+        }
     }
 
     function prerequisitesMet(course, semesterId){
