@@ -139,7 +139,15 @@
         
     <script>
         function navigateToPage(page) {
-            window.location.href = page; // Redirect to the specified page
+            // Save courses or whatever you need
+            const selectedCourses = [];
+            $(".semester .course-button").each(function () {
+                selectedCourses.push($(this).data("code"));
+            });
+            localStorage.setItem("selectedCourses", JSON.stringify(selectedCourses));
+
+            // Then navigate
+            window.location.href = page;
         }
     </script>
 </body>

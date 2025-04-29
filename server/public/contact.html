@@ -19,12 +19,17 @@
 
     <h1>Contact Us!</h1>
 
-    <div class="form-center">
+    <div class="form-center" id="form-center">
         <input type="text" id="name-input" placeholder="Full Name...">
         <input type="text" id="email-input" placeholder="Email...">
         <input type="text" id="subject-input" placeholder="Subject...">
         <textarea id="message-input" placeholder="Write your message here..."></textarea>
         <button id="msg-submit-btn" onclick="handleClick()">Submit</button>
+    </div>
+
+    <div id="message" style="display: none; text-align: center; margin-top: 20px;">
+        <h2>Thank you for message!</h2>
+        <p>We will get back to you as soon as possible.</p>
     </div>
 
     <div class="resources">
@@ -41,9 +46,8 @@
             window.location.href = page;
         }
         function handleClick() {
-            document.getElementById("message").style.display = "block";
-      
-            document.getElementById("form-center").style.display = "none";
+            document.getElementById("form-center").style.display = "none";  // fix: id not class
+            document.getElementById("message").style.display = "block";     // now it will show
         }
     </script>
 </body>

@@ -1,13 +1,24 @@
 let allCourses = [];
 
-$.get("/api/courses", function (data) {
-    allCourses = data;
-    renderCourses(allCourses); // Optionally render all at the start
-});
-
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
+    
+    $.get("/api/courses", function (data) {
+        allCourses = data;
+        renderCourses(allCourses);
 
+        const savedCourses = JSON.parse(localStorage.getItem("selectedCourses") || "[]");
+
+        if (savedCourses.length > 0) {
+            savedCourses.forEach(code => {
+                const course = allCourses.find(c => c.code === code);
+                if (course) {
+                    // Your logic to re-render the course
+                    // (example: recreate and drop into correct semester)
+                }
+            });
+        }
+    });
     // Puts the course rendering into a function so that it can be used in different ways
     function renderCourses(courseList) {
         buttonContainer.empty();
@@ -90,19 +101,12 @@ $(document).ready(() => {
 
         // If the user goes over 19 credits a warning message will come up
         const warningDiv = semesterDiv.closest(".semester-block").find(".credit-warning");
-        if (total > 15) {
-            if (warningDiv.length === 0) {
-                semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: gold;">Warning: More than 15 credits a semester is not recommended!</div>');
-            }
-        } else {
-            warningDiv.remove();
-        }
+        warningDiv.remove(); // Always remove any existing warnings first
+
         if (total > 19) {
-            if (warningDiv.length === 0) {
-                semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: red;">Warning: More than 19 credits is only allowed with special permission!credits!</div>');
-            }
-        } else {
-            warningDiv.remove();
+            semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: red;">Warning: More than 19 credits is only allowed with special permission!</div>');
+        } else if (total > 15) {
+            semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: gold;">Warning: More than 15 credits a semester is not recommended!</div>');
         }
     }
 
