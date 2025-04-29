@@ -103,7 +103,8 @@ function storeInputValues() {
     const major = document.getElementById("Major").value;
     const minor = document.getElementById("Minor").value;
     const creditsTaken = document.getElementById("credits-input").value;  // For the credits input field
-    
+    const mathPlacement = document.getElementById("math-placement").value
+
     // Log the stored values for debugging
     console.log("Stored Input Values:");
     console.log(`Year: ${year}`);
@@ -111,6 +112,7 @@ function storeInputValues() {
     console.log(`Major: ${major}`);
     console.log(`Minor: ${minor}`);
     console.log(`Credits Taken: ${creditsTaken}`);
+    console.log(`Math Placemnet: ${mathPlacement}`);
 
     // Return the values as an object (or you can use them for other purposes)
     return {
@@ -118,7 +120,8 @@ function storeInputValues() {
         semester,
         major,
         minor,
-        creditsTaken
+        creditsTaken, 
+        mathPlacement
     };
 }
 

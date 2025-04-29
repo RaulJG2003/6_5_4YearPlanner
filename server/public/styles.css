@@ -96,6 +96,7 @@ main {
 /* Sidebar (Course List) */
 #course-list {
     width: 250px;
+    height: 400px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -165,12 +166,19 @@ h3 {
 
 .semester {
     flex: 1;
-    height: 150px;
+    min-height: 150px; 
+    max-height: none;  
+    height: auto;      
     background: #ddd;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    overflow-y: auto; /* Optional: scroll if too many */
 }
 
 .semester:hover {
@@ -204,10 +212,10 @@ h3 {
     padding: 10px;
     background: gold;
     color: black;
-    margin: 5px;
-    cursor: grab;
+    margin: 5px 0; /* Vertical margin only */
     border-radius: 5px;
     text-align: center;
+    box-sizing: border-box; /* NEW: Ensures padding doesn't overflow */
 }
 
 /* Dropdown container (Initially hidden) */
@@ -231,6 +239,7 @@ h3 {
 .class-container {
     position: relative;
     margin-bottom: 15px;
+    
 }
 
 .course-button::after {
@@ -267,4 +276,142 @@ h3 {
     font-size: 14px;
     color: red;
     font-weight: bold;
+}
+
+.scrollable-results {
+    max-height: 275px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.class-container.dropped {
+    width: auto;
+    margin: 5px 0; /* vertical spacing */
+}
+
+.class-container.dropped .course-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.semester .class-container {
+    display: block;
+}
+
+#print-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#print-btn:hover {
+    background-color: #aaa209;
+}
+
+@media print {
+    /* Hide everything initially */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Only show the semester planner and its content */
+    #semester-container, #semester-container * {
+        visibility: visible;
+    }
+
+    #semester-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    /* Hide buttons and extra UI elements */
+    #printButton,
+    .top-right-buttons,
+    .scrollable-results,
+    .dropdown-content,
+    .error-msg,
+    .remove-course-button,
+    .remove-course-button::before,
+    .remove-course-button::after {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Simplify headers */
+    h2, h3, .semester-label {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+    }
+
+    /* Clean look for courses */
+    .semester {
+        border: 1px solid #000;
+        padding: 10px;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+        font-size: 14px;
+        background: none;
+    }
+
+    .course-button {
+        display: block;
+        border: none;
+        background: none;
+        padding: 2px 0;
+        margin: 2px 0;
+        font-size: 14px;
+        color: black;
+        text-align: left;
+        pointer-events: none;
+    }
+
+    /* Hide any icons or extra elements on course buttons */
+    .course-button::after,
+    .course-button::before {
+        content: none;
+    }
+
+    .class-container {
+        border: none !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .semester-block {
+        width: 100%;
+    }
+
+    .remove-course,
+    button.remove-course,
+    .class-container .remove-course {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .course-button {
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .semester-block {
+        page-break-inside: avoid;
+        break-inside: avoid; /* For extra compatibility */
+        margin-bottom: 20px;
+    }
 }
