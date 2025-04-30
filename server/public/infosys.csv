@@ -1,0 +1,21 @@
+Requirement Type,Credits Needed,Classes Needed,Possible Classes,Attributes,,,,,,
+IS Gateway,6,2,"IS300, IS310","UL, ResCred,
+ ISRes",,,,,,Notes
+Math and CS Gateway,8,2,"MATH151, CMSC201",,,,,,,ISRes = IS residency credits (300 or higher); 9 classes needed
+IS Core,24,8,"IS300, IS310, IS410, 
+IS420, IS425, IS436, 
+IS450, IS451","UL, ResCred,
+ISReq, ISRes",,,,,,ISReq = IS requirements; 21 classes needed
+CMSC Sequence,8,2,"IS147, IS247 or 
+CMSC201, CMSC202",ISReq,,,,,,
+Calculus,4,1,MATH155 or MATH151,ISReq,,,,,,
+Statistics,4,1,"STAT351 or STAT350
+or STAT355","UL, ResCred, 
+ISReq",,,,,,
+Third Programming Lang,3,1,IS246 or IS413 or IS448 or IS471 or IS472,"UL, ResCred, 
+ISReq, ISRes",,,,,,
+Mathematics Elective,3,1,MATH221,ISReq,,,,,,
+Administrative Science,15,5,"ECON101, ECON102, ECON121, ECON122, MGMT210",ISReq,,,,,,
+Admin Science (ENGL/IS),3,1,ENGL393 or IS369,"ISReq, ISRes",,,,,,
+Upper Level IS Elective,3,1,AGNG361 or CMSC352 or ECAC317 or ECAC420 or GWST352 or IS303 or IS304 or IS317 or IS320 or IS325,"UL, ResCred, 
+ISReq, ISRes",,,,,,

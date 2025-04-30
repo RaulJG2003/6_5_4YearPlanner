@@ -1,8 +1,15 @@
 let allCourses = [];
+let requirements = [];
+const csvPaths = {
+    bta: "/bta.csv",
+    cs: "/compsci.csv", 
+    is: "/infosys.csv",
+    cheme: "/chemcial engineering/ceGen.csv",
+};
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
-    
+    updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
@@ -256,5 +263,126 @@ $(document).ready(() => {
             }
         });
     });
+    $("#validate-btn").on("click", function () {
+        const plannedCourses = getPlannedCourses();
+        const summary = checkRequirements(plannedCourses);
+        displayRequirementSummary(summary);
+    });
 });
+
+function loadMajorRequirements(csvUrl) {
+    Papa.parse(csvUrl, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+            requirements = results.data;
+            console.log("CSV loaded from:", csvUrl);
+            console.log("Parsed CSV Data:", results.data);  // ← This logs the data to console
+        },
+        error: function (err) {
+            console.error("CSV parsing error:", err);
+        }
+    });
+}
+
+function getPlannedCourses() {
+    let plannedCourses = [];
+
+    $(".semester .course-button").each(function () {
+        const code = $(this).data("code");
+        const credits = parseInt($(this).data("credits")) || 0;
+        plannedCourses.push({ code, credits });
+    });
+
+    return plannedCourses;
+}
+
+function checkRequirements(plannedCourses) {
+    const plannedCodes = plannedCourses.map(c => c.code);
+    let summary = [];
+
+    requirements.forEach(req => {
+        const possibleCourses = req["Possible Courses"].split(",").map(s => s.trim());
+        console.log(`\nChecking requirement: ${req["Requirement Type"]}`);
+        console.log("Possible Courses (raw):", req["Possible Courses"]);
+        console.log("Split Possible Courses:", possibleCourses);
+        console.log("Planned Course Codes:", plannedCodes);
+        const matchingCourses = plannedCourses.filter(course =>
+            possibleCourses.includes(course.code)
+        );
+
+        const creditsEarned = matchingCourses.reduce((acc, c) => acc + c.credits, 0);
+        const classesEarned = matchingCourses.length;
+        console.log("Matching Courses:", matchingCourses.map(c => c.code));
+        const creditsNeeded = parseInt(req["Credits Needed"]);
+        const classesNeeded = parseInt(req["Classes Needed"]);
+
+        // Determine if the requirement is fulfilled
+        const fulfilled = creditsEarned >= creditsNeeded && classesEarned >= classesNeeded;
+
+        // Set the warning status if the user is close to meeting the requirements
+        const warning = creditsEarned >= creditsNeeded - 3; // For example, give warning if within 3 credits
+
+        // If not fulfilled and no warning, it's an error
+        const error = !fulfilled && !warning;
+
+        summary.push({
+            name: req["Requirement Type"],
+            fulfilled,
+            warning,
+            error,
+            creditsNeeded,
+            creditsEarned,
+            classesNeeded,
+            classesEarned,
+            remainingCredits: Math.max(0, creditsNeeded - creditsEarned),
+            remainingClasses: Math.max(0, classesNeeded - classesEarned),
+        });
+    });
+
+    return summary;
+}
+
+function displayRequirementSummary(requirements) {
+    const summaryContainer = document.getElementById('requirement-summary');
+    summaryContainer.innerHTML = ''; // Clear existing content
+
+    requirements.forEach((requirement) => {
+        const requirementItem = document.createElement('div');
+        requirementItem.classList.add('requirement-item');
+
+        const remainingCredits = requirement.remainingCredits;
+
+        if (remainingCredits === 0) {
+            requirementItem.classList.add('fulfilled');
+            requirementItem.innerHTML = `
+                <strong>${requirement.name}:</strong> <span class="status-text">0 credits remaining (Fulfilled)</span>
+            `;
+        } else if (requirement.warning) {
+            requirementItem.classList.add('warning');
+            requirementItem.innerHTML = `
+                <strong>${requirement.name}:</strong> <span class="status-text">${remainingCredits} credits remaining (Warning)</span>
+            `;
+        } else {
+            requirementItem.classList.add('error');
+            requirementItem.innerHTML = `
+                <strong>${requirement.name}:</strong> <span class="status-text">${remainingCredits} credits remaining (Unfulfilled)</span>
+            `;
+        }
+
+        summaryContainer.appendChild(requirementItem);
+    });
+}
+
+
+function updateDegreeAndLoadCSV(selectedMajor) {
+    const csvPath = csvPaths[selectedMajor];
+
+    if (csvPath) {
+        loadMajorRequirements(csvPath);  // Load the corresponding CSV
+    } else {
+        console.error("CSV path not found for degree:", major);
+    }
+}
 

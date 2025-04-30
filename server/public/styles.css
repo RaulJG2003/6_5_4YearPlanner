@@ -103,6 +103,7 @@ main {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     outline-style: solid;
     outline-width: 5px;
+    margin-bottom: 50px;
 }
 
 #courses {
@@ -286,6 +287,7 @@ h3 {
     margin-top: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .class-container.dropped {
@@ -318,6 +320,54 @@ h3 {
 #print-btn:hover {
     background-color: #aaa209;
 }
+
+
+#validate-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#validate-btn:hover {
+    background-color: #aaa209;
+}
+
+.button-box {
+    width: 250px;
+    height: 150px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    outline-style: solid;
+    outline-width: 5px;
+}
+
+.button-box h3 {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.button-box button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.course-section {
+    width: 300px; /* or match the #course-list width */
+    margin-right: 30px;
+}
+
 
 @media print {
     /* Hide everything initially */
@@ -414,4 +464,59 @@ h3 {
         break-inside: avoid; /* For extra compatibility */
         margin-bottom: 20px;
     }
+}
+
+/* General styling for the summary container */
+#requirement-summary {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+}
+
+/* Individual requirement items */
+.requirement-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Styling for fulfilled requirements */
+.fulfilled {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.fulfilled .status-text {
+    color: #155724;
+}
+
+/* Styling for warning requirements */
+.warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.warning .status-text {
+    color: #856404;
+}
+
+/* Styling for error requirements */
+.error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.error .status-text {
+    color: #721c24;
+}
+
+/* Optional: Add some hover effects to make it interactive */
+.requirement-item:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#sideboxes {
+    gap: 50px;
 }
