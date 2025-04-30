@@ -31,7 +31,7 @@
 
     <div class="container">
         <!-- Sidebar for draggable courses -->
-        <div id="course-list">
+        <div id="course-list" class="course-section">
             <h2> Available Courses</h2>
             <input type="text" id="search-input" placeholder="Search for courses...">
             <div class="scrollable-results">
@@ -39,8 +39,13 @@
                     <!-- Buttons and dropdowns will be injected here -->
                 </ul>
             </div>
-            
+            <div class="button-box">
+                <h3>Options</h3>
+                <button id="print-btn">🖨️ Print to PDF</button>
+                <button id="validate-btn">Check Degree Requirements</button>
+            </div>
         </div>
+
         <!-- 4-Year Plan (8 Semesters) -->
         <div id="semester-container">
             <h2>4-Year Plan</h2>
@@ -129,8 +134,12 @@
             </div>
         </div>
     </div>
-    <button id="print-btn">🖨️ Print to PDF</button>
+    <div id="requirement-summary"></div>
+
+    <script src="search.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
     <script>
         document.getElementById("print-btn").addEventListener("click", () => {
             window.print();

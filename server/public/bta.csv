@@ -1,0 +1,30 @@
+Requirement Type,Credits Needed,Classes Needed,Possible Classes,Attributes,,,,,,,,,,,
+Information Systems,3,1,IS125 or IS147 or IS296,bbISReq,,,,,,,,,,,
+IS Core Requirements,27,9,"IS202, IS295, IS300, IS303,
+ IS320, IS325, IS350, IS438,
+ IS440","bISReq, 
+ISCore, BTARes",,,,,,,,,,,
+"IS Upper Level 
+Electives",3,1,AGNG361 or CMSC352 or ECAC317 or ECAC420 or GWST352 or IS304 or IS310 or IS317 or  IS352 or IS361,"UL, 
+ResCred, 
+bISReq, BTARes",,,,,,,,,,,Attribute Notes - General Requirements
+Calculus,4,1,MATH151 or MATH155,bISReq,,,,,,,,,,,UL = Upper Level Course; 45 credits needed
+Statistics,4,1,STAT355 or STAT351,"UL, 
+ResCred,
+ bISReq, BTARes",,,,,,,,,,,ResCred = Residency credits; 30 credits needed
+Economics,12,4,"ECON101, ECON102, 
+ECON121, ECON122",bISReq,,,,,,,,,,,WI = Writing Intensive; 1 course needed
+English,3,1,ENGL393 or IS369,"bISReq, BTARes",,,,,,,,,,,GEPEng = English GEP; 1 course needed
+Management,6,2,"MGMT210, MGMT489",bISReq,,,,,,,,,,,GEPaH = Arts and Humanities GEP; 3 courses needed
+"Management Upper 
+Level Elective",3,1,MGMT310 or MGMT360 or MGMT385 or MGMT410 or MGMT425 or MGMT498,"UL, bISReq, BTARes",,,,,,,,,,,GEPMath = Math GEP; 1 course needed
+,,,,,,,,,,,,,,,GEPSci = Science GEP; 2 courses needed
+,,,,,,,,,,,,,,,GEPCult = Culture GEP; 1 course need for B.S; 2 for B.A.
+,,,,,,,,,,,,,,,GEPSS = Social Science GEP; 3 courses needed
+,,,,,,,,,,,,,,,GEPSciL = Science Lab GEP; 1 course needed
+,,,,,,,,,,,,,,,GEPLang = Language GEP;  1 course needed
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,Attribute Notes - BTA Requirements
+,,,,,,,,,,,,,,,BTARes - BTA Residency Credits (300 or higher); 9 courses
+,,,,,,,,,,,,,,,bISReq - BTA Info Systems Requirement
