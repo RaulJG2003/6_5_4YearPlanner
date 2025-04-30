@@ -9,7 +9,7 @@ const csvPaths = {
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
-    updateDegreeAndLoadCSV("cs");
+    updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
