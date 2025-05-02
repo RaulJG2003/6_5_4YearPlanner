@@ -96,6 +96,15 @@
     <!--Short script to move to the next page with the submit button-->
     <script>
         function navigateToPage(page) {
+            const takenCourses = selectedCourses.map(c => c.code); // example, collect from form or UI 
+            // Populate takenCourses from selected checkboxes or other method
+
+            localStorage.setItem("takenCourses", JSON.stringify(takenCourses));
+
+                // (Optional) Store other user info if needed later
+            const userInfo = storeInputValues();
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
             window.location.href = page; // Redirect to the specified page
         }
     </script>

@@ -28,9 +28,16 @@ $(document).ready(() => {
     });
     // Puts the course rendering into a function so that it can be used in different ways
     function renderCourses(courseList) {
+
+        const buttonContainer = $("#course-buttons");
         buttonContainer.empty();
 
+        const takenCourses = JSON.parse(localStorage.getItem("takenCourses") || "[]");
+
         courseList.forEach((course, index) => {
+
+            const isTaken = takenCourses.includes(course.code);
+
             const button = $(`<div class="course-button" data-code="${course.code}" data-credits="${course.credits}">`)
                 .text(`${course.code} - ${course.name}`)
                 .click(function () {
@@ -39,6 +46,10 @@ $(document).ready(() => {
                         $(this).toggleClass('active');
                     }
                 });
+            
+            if (isTaken){
+                button.css("background-color", "lightgreen"); // highlight taken courses
+            }
 
             const dropdown = $(`
                 <div class="dropdown-content" id="dropdown-${index}">
