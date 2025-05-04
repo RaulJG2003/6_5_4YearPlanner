@@ -1,4 +1,4 @@
-// FUnction for the class search 
+// Function for the class search 
 document.getElementById("search-form").addEventListener("submit", function(event) {
     event.preventDefault();
     const query = document.getElementById("search-input").value;
@@ -174,6 +174,59 @@ function debugUserInfo() {
     });
     
     console.log("--------------------------------");
+}
+
+function validateInputs() {
+    const creditsTaken = parseInt(document.getElementById("credits-input").value, 10);
+    const mathPlacement = parseInt(document.getElementById("placement-input").value, 10);
+    const year = document.getElementById("Year").value;
+    const semester = document.getElementById("Semester").value;
+    const major = document.getElementById("Major").value;
+    const minor = document.getElementById("Minor").value;
+
+    let isValid = true;
+    let errorMessage = "";
+
+    const errorDiv = document.getElementById("error-message");
+    errorDiv.style.display = "none";
+    errorDiv.innerHTML = "";
+
+    if (isNaN(creditsTaken) || creditsTaken < 0 || creditsTaken > 200) {
+        errorMessage += "Credits Taken must be a number between 0 and 200.\n";
+        isValid = false;
+    }
+
+    if (isNaN(mathPlacement) || mathPlacement < 0 || mathPlacement > 100) {
+        errorMessage += "Math Placement must be a number between 0 and 100.\n";
+        isValid = false;
+    }
+
+    if (!year || year === "What year are you?") {
+        errorMessage += "Please select a valid Year.\n";
+        isValid = false;
+    }
+
+    if (!semester || semester === "What semester are you in currently?") {
+        errorMessage += "Please select a valid Semester.\n";
+        isValid = false;
+    }
+
+    if (!major || major === "What major are you?") {
+        errorMessage += "Please select a valid Major.\n";
+        isValid = false;
+    }
+
+    if (!minor || minor === "Do you have a minor?") {
+        errorMessage += "Please select a valid Minor.\n";
+        isValid = false;
+    }
+
+    if (!isValid) {
+        errorDiv.innerHTML = errorMessage;
+        errorDiv.style.display = "block";
+    }
+
+    return isValid;
 }
 
 document.getElementById("debug-btn").addEventListener("click", debugUserInfo);

@@ -71,7 +71,7 @@
             <p>
                 <!-- Action Buttons -->
                 <div class="bottom-buttons">
-                    <button id="submit-btn" onclick="navigateToPage('index.html')">Generate Planner!</button>
+                    <button id="submit-btn" onclick="navigateToPlanner('index.html')">Generate Planner!</button>
                     <button id="reset-btn" onclick="navigateToPage('Prompt.html')">Reset Entries</button>
                 </div>
             </p>
@@ -92,11 +92,19 @@
             <!--<button id="debug-btn">Debug (prints to console)</button>-->
         </div>
     </div>
+    <div id="error-message" ></div>
+
 
     <!--Short script to move to the next page with the submit button-->
     <script>
         function navigateToPage(page) {
             window.location.href = page; // Redirect to the specified page
+        }
+        function navigateToPlanner(page) {
+            if (validateInputs()) {
+                const inputData = storeInputValues();
+                window.location.href = page; // Redirect to the specified page
+            }
         }
     </script>
 
