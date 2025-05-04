@@ -5,11 +5,12 @@ const csvPaths = {
     cs: "/compsci.csv", 
     is: "/infosys.csv",
     cheme: "/chemcial engineering/ceGen.csv",
+    all: "/classes.csv"
 };
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
-    updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
+    updateDegreeAndLoadCSV('all'); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
@@ -49,6 +50,7 @@ $(document).ready(() => {
             
             if (isTaken){
                 button.css("background-color", "lightgreen"); // highlight taken courses
+                button.attr("data-taken", "true"); // Mark as taken
             }
 
             const dropdown = $(`
@@ -128,28 +130,29 @@ $(document).ready(() => {
         }
     }
 
-    function prerequisitesMet(course, semesterId){
-        
+    function prerequisitesMet(course, semesterId, courseButton = null) {
         if (!course || !Array.isArray(course.prerequisites)) return true;
-
-        // If no prerequisites or only empty strings, it's considered met
+    
         const filteredPrereqs = course.prerequisites.filter(p => p.trim() !== "");
         if (filteredPrereqs.length === 0) return true;
-        
+    
+        // ✅ If this course was marked as taken by the user, consider prereqs met
+        if (courseButton && courseButton.attr("data-taken") === "true") {
+            return true;
+        }
+    
         const currentSemesterIndex = parseInt(semesterId.split('-')[1]);
-
-        // Gather all the courses from semesters before the current one
-        let takenCourses = new Set();
-        for (let i = 1; i < currentSemesterIndex; i++){
+        const takenCourses = new Set(JSON.parse(localStorage.getItem("takenCourses") || "[]"));
+    
+        for (let i = 1; i < currentSemesterIndex; i++) {
             $(`#semester-${i} .course-button`).each(function () {
                 takenCourses.add($(this).data("code"));
             });
         }
-
-        // Check if all prerequisites are in takenCourses
+    
         return course.prerequisites.every(prereq => takenCourses.has(prereq));
     }
-
+    
     // Make semesters droppable
     $(".semester").droppable({
         accept: ".class-container",
@@ -173,15 +176,15 @@ $(document).ready(() => {
         
             // Check if prerequisites are met
             const courseObj = allCourses.find(c => c.code === code);
-            if (!prerequisitesMet(courseObj, semester.attr("id"))) {
-                original.find(".course-button").css("background-color", "#f44336"); // red
+            if (!prerequisitesMet(courseObj, semester.attr("id"), button)) {
+                button.css("background-color", "#f44336"); // red
                 if (!original.find(".error-msg").length) {
                     original.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
                 }
             } else {
-                original.find(".course-button").css("background-color", "gold");
+                button.css("background-color", "gold");
                 original.find(".error-msg").remove();
-            }
+            }            
         
             // Add the "X" remove button only if it hasn't been added yet
             if (!button.find(".remove-course").length) {
@@ -262,14 +265,19 @@ $(document).ready(() => {
             const code = button.data("code");
             const semesterDiv = container.closest(".semester");
             const courseObj = allCourses.find(c => c.code === code);
-
-            if (!prerequisitesMet(courseObj, semesterDiv.attr("id"))) {
+        
+            if (!prerequisitesMet(courseObj, semesterDiv.attr("id"), button)) {
                 button.css("background-color", "#f44336");
                 if (!container.find(".error-msg").length) {
                     container.append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
                 }
             } else {
-                button.css("background-color", "gold");
+                // Check if the course is marked as taken and color it appropriately
+                if (button.attr("data-taken") === "true") {
+                    button.css("background-color", "lightgreen");
+                } else {
+                    button.css("background-color", "gold");
+                }
                 container.find(".error-msg").remove();
             }
         });
