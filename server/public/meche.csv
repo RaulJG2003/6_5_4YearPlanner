@@ -1,0 +1,13 @@
+Requirement Type,Credits Needed,Classes Needed,Possible Courses,Attributes
+Mathematics,15,4,"MATH 151, MATH 152, MATH 225, MATH 251",
+Statistics,4,1,"STAT 355",
+Chemistry,10,3,"CHEM 101, CHEM 102, CHEM 102L",
+Physics,8,2,"PHYS 121, PHYS 122",
+Engineering Science,3,1,"ENES 101",
+Computer Engineering,4,1,"CMPE 306",
+Mechanical Engineering Core,39,13,"ENME 110, ENME 204, ENME 217, ENME 220, ENME 221, ENME 301, ENME 303, ENME 304, ENME 320, ENME 321, ENME 332L, ENME 360",
+Mechanical Engineering Labs,6,2,"ENME 432L, ENME 482L",
+Mechanical Engineering Design,6,2,"ENME 403, ENME 444",
+Technical/Design Electives,6,2,"ENME 4XX (Technical Elective), ENME 4XX (Design Elective)",
+Science/Technical Elective,3,1,"S/TE",
+General Education Program (GEP),24,8,"Various courses fulfilling GEP requirements",GEP

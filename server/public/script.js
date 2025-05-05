@@ -6,12 +6,14 @@ const csvPaths = {
     cs: "/compsci.csv",
     is: "/infosys.csv",
     cheme: "/chemical engineering/ceTrad.csv",
+    MECHE: "/meche.csv"
 };
 const planPaths ={
     bta: "/btaGP.csv",
     cs: "/csGP.csv",
     is: "/isGP.csv",
-    cheme: "/chemeGP.csv"
+    cheme: "/chemeGP.csv",
+    MECHE: "/mecheGP.csv"
 
 }
 
@@ -289,7 +291,7 @@ $(document).ready(() => {
         displayRequirementSummary(summary);
     });
 
-    let major = "cs"; // Default major (can be changed dynamically)
+    //let major = "cs"; // Default major (can be changed dynamically)
 
 $("#generate-plan").on("click", function () {
     console.log("Loading plan for major:", major);
