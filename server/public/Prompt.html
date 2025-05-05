@@ -46,7 +46,7 @@
                     <option value="BTA">Business Technology Administration</option>
                     <option value="CHEME">Chemical Engineering</option>
                     <option value="COMPE">Computer Engineering</option>
-                    <option value="COMPSCI">Computer Science</option>
+                    <option value="CS">Computer Science</option>
                     <option value="IS">Information Systems</option>
                     <option value="MECHE">Mechanical Engineering</option>
                 </select>
@@ -102,8 +102,10 @@
         }
         function navigateToPlanner(page) {
             if (validateInputs()) {
-                const inputData = storeInputValues();
-                window.location.href = page; // Redirect to the specified page
+               const inputData = storeInputValues();
+                const major = document.getElementById("Major").value; // Get selected major
+                window.location.href = `${page}?major=${major}`; // Redirect with major in URL
+                //window.location.href = page; // Redirect to the specified page
             }
         }
     </script>
