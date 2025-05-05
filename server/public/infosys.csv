@@ -1,26 +1,19 @@
 Requirement Type,Credits Needed,Classes Needed,Possible Courses,Attributes
-IS Gateway,6,2,"IS300, IS310","UL, ResCred,
- ISRes"
-Math and CS Gateway,8,2,"MATH151, CMSC201",ISRes
-IS Core,24,8,"IS300, IS310, IS410, 
-IS420, IS425, IS436, 
-IS450, IS451","UL, ResCred,
- ISReq, ISRes"
-CMSC Sequence,8,2,"IS147, IS247, CMSC201, CMSC202",ISReq
-Calculus,4,1,"MATH155, MATH151",ISReq
-Statistics,4,1,"STAT351, STAT350, STAT355","UL, ResCred, 
- ISReq"
-Third Programming Language,3,1,"IS246, IS413, IS448, IS471, IS472","UL, ResCred, 
- ISReq, ISRes"
-Mathematics Elective,3,1,MATH221,ISReq
-Administrative Science,15,5,"ECON101, ECON102, ECON121, ECON122, MGMT210",ISReq
-Admin Science (ENGL/IS),3,1,"ENGL393, IS369","ISReq, ISRes"
-Upper Level IS Elective,3,1,"AGNG361, CMSC352, ECAC317, ECAC420, GWST352, IS303, IS304, IS317, IS320, IS325","UL, ResCred, 
- ISReq, ISRes"
-English Composition,3,1,ENGL100,GED
-Art/Humanities,9,3,Arts/Humanities Course,GED
-Social Sciences,9,3,Social Science Course,GED
-Science,8,2,"BIOL141, BIOL142, CHEM101, CHEM102, PHYS121, PHYS122",GED
-Science Lab,2,1,"SCI101L, CHEM102L, PHYS122L, GES286",GED
-Culture,3,1,Culture Course,GED
-Language,3,1,"ARBC201, CHIN201, FREN201, GERM201, HEBR201, HIND201, JPNS201, KORE201, RUSS201, SPAN201, WOL201",GED
+IS Gateway,6,2,"IS 300, IS 310","UL, ResCred, ISRes"
+Math and CS Gateway,8,2,"MATH 151, CMSC 201",ISRes
+IS Core,24,8,"IS 300, IS 310, IS 410, IS 420, IS 425, IS 436, IS 450, IS 451","UL, ResCred, ISReq, ISRes"
+CMSC Sequence,8,2,"IS 147, IS 247, CMSC 201, CMSC 202",ISReq
+Calculus,4,1,"MATH 155, MATH 151",ISReq
+Statistics,4,1,"STAT 351, STAT 350, STAT 355","UL, ResCred, ISReq"
+Third Programming Language,3,1,"IS 246, IS 413, IS 448, IS 471, IS 472","UL, ResCred, ISReq, ISRes"
+Mathematics Elective,3,1,MATH 221,ISReq
+Administrative Science,15,5,"ECON 101, ECON 102, ECON 121, ECON 122, MGMT 210",ISReq
+Admin Science (ENGL/IS),3,1,"ENGL 393, IS 369","ISReq, ISRes"
+Upper Level IS Elective,3,1,"AGNG 361, CMSC 352, ECAC 317, ECAC 420, GWST 352, IS 303, IS 304, IS 317, IS 320, IS 325","UL, ResCred, ISReq, ISRes"
+English Composition,3,1,"ENGL 100, ENGL GEP",GED
+Art/Humanities,9,3,AH GEP,GED
+Social Sciences,9,3,SS GEP,GED
+Science,8,2,"S w/ lab GEP, S non-lab GEP, BIOL 141, BIOL 142, CHEM 101, CHEM 102, PHYS 121, PHYS 122",GED
+Science Lab,2,1,"S w/ lab GEP, SCI 101L, CHEM 102L, PHYS 122L, GES 286",GED
+Culture,3,1,C GEP,GED
+Language,3,1,"ARBC 201, CHIN 201, FREN 201, GERM 201, HEBR 201, HIND 201, JPNS 201, KORE 201, RUSS 201, SPAN 201, WOL 201, Foreign Language 201",GED

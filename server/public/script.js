@@ -32,7 +32,7 @@ $(document).ready(() => {
         allCourses = data;
         renderCourses(allCourses);
         updateDegreeAndLoadCSV(major); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
-
+    
         const savedCourses = JSON.parse(localStorage.getItem("selectedCourses") || "[]");
 
         if (savedCourses.length > 0) {
@@ -133,7 +133,7 @@ $(document).ready(() => {
         if (total > 19) {
             semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: red;">Warning: More than 19 credits is only allowed with special permission!</div>');
         } else if (total > 15) {
-            semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: gold;">Warning: More than 15 credits a semester is not recommended!</div>');
+            semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: orange;">Warning: More than 15 credits a semester is not recommended!</div>');
         }
     }
    
