@@ -17,12 +17,22 @@ const planPaths ={
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
+    // Extract major from URL (e.g., "COMPSCI" from index.html?major=COMPSCI)
+    const urlParams = new URLSearchParams(window.location.search);
+    const major = urlParams.get("major")?.toLowerCase(); // Convert to lowercase to match csvPaths keys
+    if (major) {
+        // Replace the hardcoded "cheme" with the dynamic major
+        console.log("success!") // Now loads the correct plan based on user selection
+    } else {
+        console.error("No major selected!");
+        // Fallback to a default major if needed
+        major = 'cs'; // Default to Computer Science
+    }
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
-        updateDegreeAndLoadCSV("is"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
-
-
+        updateDegreeAndLoadCSV(major); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
+    
         const savedCourses = JSON.parse(localStorage.getItem("selectedCourses") || "[]");
 
         if (savedCourses.length > 0) {
