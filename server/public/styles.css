@@ -337,13 +337,29 @@ h3 {
     background-color: #aaa209;
 }
 
+
+#generate-plan{
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: gold;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#generate-plan:hover {
+    background-color: #aaa209;
+}
+
 .button-box {
     width: 250px;
-    height: 150px;
+    height: 200px;
     background: white;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     outline-style: solid;
     outline-width: 5px;
 }
