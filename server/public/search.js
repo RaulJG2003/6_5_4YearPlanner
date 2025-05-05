@@ -185,44 +185,52 @@ function validateInputs() {
     const minor = document.getElementById("Minor").value;
 
     let isValid = true;
-    let errorMessage = "";
+    let errors = [];
 
     const errorDiv = document.getElementById("error-message");
     errorDiv.style.display = "none";
     errorDiv.innerHTML = "";
 
     if (isNaN(creditsTaken) || creditsTaken < 0 || creditsTaken > 200) {
-        errorMessage += "Credits Taken must be a number between 0 and 200.\n";
+        errors.push("Credits Taken must be a number between 0 and 200.");
         isValid = false;
     }
 
     if (isNaN(mathPlacement) || mathPlacement < 0 || mathPlacement > 100) {
-        errorMessage += "Math Placement must be a number between 0 and 100.\n";
+        errors.push("Math Placement must be a number between 0 and 100.");
         isValid = false;
     }
 
     if (!year || year === "What year are you?") {
-        errorMessage += "Please select a valid Year.\n";
+        errors.push("Please select a valid Year.");
         isValid = false;
     }
 
     if (!semester || semester === "What semester are you in currently?") {
-        errorMessage += "Please select a valid Semester.\n";
+        errors.push("Please select a valid Semester.");
         isValid = false;
     }
 
     if (!major || major === "What major are you?") {
-        errorMessage += "Please select a valid Major.\n";
+        errors.push("Please select a valid Major.");
         isValid = false;
     }
 
     if (!minor || minor === "Do you have a minor?") {
-        errorMessage += "Please select a valid Minor.\n";
+        errors.push("Please select a valid Minor.");
         isValid = false;
     }
 
     if (!isValid) {
-        errorDiv.innerHTML = errorMessage;
+        // Build the HTML unordered list
+        const ul = document.createElement("ul");
+        errors.forEach(err => {
+            const li = document.createElement("li");
+            li.textContent = err;
+            ul.appendChild(li);
+        });
+
+        errorDiv.appendChild(ul);
         errorDiv.style.display = "block";
     }
 

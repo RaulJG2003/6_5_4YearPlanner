@@ -1,22 +1,17 @@
 Requirement Type,Credits Needed,Classes Needed,Possible Courses,Attributes
-Information Systems,3,1,"IS125, IS147, IS296",
-IS Core Requirements,27,9,"IS202, IS295, IS300, IS303,
- IS320, IS325, IS350, IS438,
- IS440","bISReq, ISCore, BTARes"
-IS Upper Level Electives,3,1,"AGNG361, CMSC352, ECAC317, ECAC420, GWST352, IS304, IS310, IS317, IS352, IS361","UL, ResCred,
- bISReq, BTARes"
-Calculus,4,1,"MATH151, MATH155",bISReq
-Statistics,4,1,"STAT355, STAT351","UL, ResCred,
- bISReq, BTARes"
-Economics,12,4,"ECON101, ECON102,
- ECON121, ECON122",bISReq
-English,3,1,"ENGL393, IS369","bISReq, BTARes"
-Management,6,2,"MGMT210, MGMT489",bISReq
-Management Upper Level Elective,3,1,"MGMT310, MGMT360, MGMT385, MGMT410, MGMT425, MGMT498","UL, bISReq, BTARes"
-English Composition,3,1,ENGL100,GED
-Art/Humanities,9,3,Arts/Humanities Course,GED
-Social Sciences,9,3,Social Science Course,GED
-Science,8,2,"BIOL141, BIOL142, CHEM101, CHEM102, PHYS121, PHYS122",GED
-Science Lab,2,1,"SCI101L, CHEM102L, PHYS122L, GES286",GED
-Culture,3,1,Culture Course,GED
-Language,3,1,"ARBC201, CHIN201, FREN201, GERM201, HEBR201, HIND201, JPNS201, KORE201, RUSS201, SPAN201, WOL201",GED
+Information Systems,3,1,"IS 125, IS 147, IS 296",
+IS Core Requirements,27,9,"IS 202, IS 295, IS 300, IS 303, IS 320, IS 325, IS 350, IS 438, IS 440","bISReq, ISCore, BTARes"
+IS Upper Level Electives,3,1,"AGNG 361, CMSC 352, ECAC 317, ECAC 420, GWST 352, IS 304, IS 310, IS 317, IS 352, IS 361","UL, ResCred, bISReq, BTARes"
+Calculus,4,1,"MATH 151, MATH 155",bISReq
+Statistics,4,1,"STAT 355, STAT 351","UL, ResCred, bISReq, BTARes"
+Economics,12,4,"ECON 101, ECON 102, ECON 121, ECON 122",bISReq
+English,3,1,"ENGL 393, IS 369","bISReq, BTARes"
+Management,6,2,"MGMT 210, MGMT 489",bISReq
+Management Upper Level Elective,3,1,"MGMT 310, MGMT 360, MGMT 385, MGMT 410, MGMT 425, MGMT 498","UL, bISReq, BTARes"
+English Composition,3,1,"ENGL 100, ENGL GEP",GED
+Art/Humanities,9,3,AH GEP,GED
+Social Sciences,9,3,SS GEP,GED
+Science,8,2,"BIOL 141, BIOL 142, CHEM 101, CHEM 102, PHYS 121, PHYS 122",GED
+Science Lab,2,1,"SCI 101L, CHEM 102L, PHYS 122L, GES 286",GED
+Culture,3,1,C GEP,GED
+Language,3,1,"ARBC 201, CHIN 201, FREN 201, GERM 201, HEBR 201, HIND 201, JPNS 201, KORE 201, RUSS 201, SPAN 201, WOL 201, Foreign Language 201",GED
