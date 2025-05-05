@@ -6,14 +6,14 @@ const csvPaths = {
     cs: "/compsci.csv",
     is: "/infosys.csv",
     cheme: "/chemical engineering/ceTrad.csv",
-    MECHE: "/meche.csv"
+    meche: "/meche.csv"
 };
 const planPaths ={
     bta: "/btaGP.csv",
     cs: "/csGP.csv",
     is: "/isGP.csv",
     cheme: "/chemeGP.csv",
-    MECHE: "/mecheGP.csv"
+    meche: "/mecheGP.csv"
 
 }
 

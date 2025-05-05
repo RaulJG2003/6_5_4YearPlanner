@@ -93,3 +93,16 @@ IS 420,Database Application Development,"IS 410",,3,Spring
 IS 451,Network Design & Management,"IS 450",,3,Spring
 IS 425,Decision Support Systems,"IS 420",,3,Fall
 IS 436,Structured Systems Analysis & Design,"IS 425",,3,Spring
+ENME 220,Mechanics of Materials,"ENME 110, MATH 152, PHYS 121",,3,Fall
+ENME 221,Dynamics,"ENME 110, MATH 152, PHYS 121",,3,Spring
+ENME 204,Intro to Engineering Design with CAD,"ENES 101, ENGL 100, ENME 220",WI,3,Spring
+CMPE 306,Intro Circuit Theory,"PHYS 122, MATH 225","GEP, GFR",4,Fall
+ENME 303,Computational Methods for Engineers,"ENME 220,  ENME 221, MATH 225, MATH 251",,3,Fall
+ENME 301,The Structure and Properties of Engineering Materials,"CHEM 102, CHEM 102L, PHYS 122",,3,Fall
+ENME 304,Machine Design,"ENME 204",,3,Spring
+ENME 321,Transfer Processes,"ENME 320",,3,Spring
+ENME 360,Vibrations,"ENME 220,ENME 221,ENME 303,MATH 225",,3,Spring
+ENME 332L,Solid Mechanics and Materials Laboratory,"ENGL 100, ENME 220, ENME 301",,3,Spring
+ENME 403,Automatic Controls,"CMPE 306, ENEE 302",,3,Fall
+ENME 432L,Fluids/Energy Laboratory,"ENGL 100, ENME 320, ENME 321",WI,2,Fall
+ENME 444,Mechanical Engineering Systems Design,"All 300-level courses required in Mech E B.S.",,3,Spring
