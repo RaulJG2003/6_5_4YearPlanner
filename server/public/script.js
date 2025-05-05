@@ -402,11 +402,11 @@ function loadFourYearPlan(planArray) {
                 .find(".remove-course")
                 .on("click", function (e) {
                     e.stopPropagation();
-                    
-                    let total = 0; 
+
+                    let total = 0;
 
                     classContainer.remove();
-                    
+
                     semesterDiv.find(".class-container").each(function () {
                         const credits = parseInt($(this).find(".course-button").data("credits"));
                         total += isNaN(credits) ? 0 : credits;
@@ -416,6 +416,42 @@ function loadFourYearPlan(planArray) {
                     const creditSpan = semesterDiv.closest(".semester-block").find(".credit-total");
                     if (creditSpan.length) {
                         creditSpan.text("Credits: " + total);
+                    }
+
+                    // Check prerequisites for all remaining courses in later semesters
+                    const currentSemesterNum = parseInt(semester);
+                    for (let i = currentSemesterNum + 1; i <= 8; i++) {
+                        const laterSemester = $(`#semester-${i}`);
+                        if (laterSemester.length) {
+                            laterSemester.find(".class-container").each(function() {
+                                const courseButton = $(this).find(".course-button");
+                                const courseCode = courseButton.data("code");
+                                const courseObj = allCourses.find(c => c.code === courseCode);
+                                
+                                if (courseObj && Array.isArray(courseObj.prerequisites)) {
+                                    const filteredPrereqs = courseObj.prerequisites.filter(p => p.trim() !== "");
+                                    if (filteredPrereqs.length > 0) {
+                                        let takenCourses = new Set();
+                                        for (let j = 1; j < i; j++) {
+                                            $(`#semester-${j} .course-button`).each(function() {
+                                                takenCourses.add($(this).data("code"));
+                                            });
+                                        }
+
+                                        const allPrereqsMet = courseObj.prerequisites.every(prereq => takenCourses.has(prereq));
+                                        if (!allPrereqsMet) {
+                                            courseButton.css("background-color", "#f44336"); // red
+                                            if (!$(this).find(".error-msg").length) {
+                                                $(this).append(`<div class="error-msg" style="color: red;">Missing prerequisites: ${courseObj.prerequisites.join(", ")}</div>`);
+                                            }
+                                        } else {
+                                            courseButton.css("background-color", "gold");
+                                            $(this).find(".error-msg").remove();
+                                        }
+                                    }
+                                }
+                            });
+                        }
                     }
                 });
 
@@ -448,7 +484,6 @@ function loadFourYearPlan(planArray) {
         });
     }
 }
-
 function getPlannedCourses() {
     let plannedCourses = [];
 
