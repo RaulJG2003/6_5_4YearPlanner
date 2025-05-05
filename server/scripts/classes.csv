@@ -4,28 +4,92 @@ CMSC 201,Computer Science 201,"MATH 150, MATH 151, MATH 152",,4,"Fall,Spring"
 CMSC 202,Computer Science 202,"CMSC 201,CMSC 201H/MATH 150, MATH 151, MATH 152",,4,"Fall,Spring"
 CMSC 203,Discrete Structures,"MATH 150, MATH 151",,3,"Fall,Spring"
 CMSC 304,Ethics,"ENGL 100/ CMSC 202,CMSC 210",WI,3,"Fall,Spring"
-MATH 151,,,,,"Fall,Spring"
-Foreign Language 201,,,,,"Fall,Spring"
-ENGL GEP,,,,,"Fall,Spring"
-MATH 152,,,,,"Fall,Spring"
-AH GEP,,,,,"Fall,Spring"
-SS GEP,,,,,"Fall,Spring"
-CMSC 331,,CMSC 202,,4,"Fall,Spring"
-CMSC 341,,CMSC 202,,4,"Fall,Spring"
-Science Sequence I,,,,,"Fall,Spring"
-Elective,,,,,"Fall,Spring"
-CMSC 313,,CMSC 202,,4,"Fall,Spring"
-MATH 221,,"MATH 151, MATH 152",,4,"Fall,Spring"
-Science Sequence II,,,,,"Fall,Spring"
-Science Lab,,,,,"Fall,Spring"
-CMSC 411,,CMSC 313,,4,"Fall,Spring"
-CMSC 4XX Elective,,"CMSC 313, CMSC 331",,3,"Fall,Spring"
-STAT 355,,,,3,"Fall,Spring"
-CMSC 421,,CMSC 411,,3,"Fall,Spring"
-AH GEP,,,,,"Fall,Spring"
-C GEP,,,,,"Fall,Spring"
-CMSC 441,,CMSC 421,,3,"Fall,Spring"
-CMSC 447,,CMSC 421,,3,"Fall,Spring"
-Upper-Level Elective,,CMSC 421,,3,"Fall,Spring"
-CMSC 4XX Elective,,"CMSC 421",,3,"Fall,Spring"
-Elective,,,,,"Fall,Spring"
+MATH 151,Calc. & Analytic Geom. I,,MATH GEP,4,Fall
+Foreign Language 201,Foreign Language 201,,,4,Fall
+ENGL GEP,English General Education,,GEP,3,Fall
+MATH 152,Calculus and Analytic Geometry II,"MATH 151",,4,Spring
+AH GEP,Arts & Humanities General Education,,GEP,3,Spring
+SS GEP,Social Sciences General Education,,GEP,3,Spring
+CMSC 331,Principles of Programming Language,"CMSC 202",,3,Fall
+CMSC 341,Data Structures,"CMSC 202",§,3,Fall
+SCI 1,Science Sequence I,,S non-lab GEP,4,Fall
+SS GEP,Social Sciences General Education,,GEP,3,Fall
+ELECT 1,Elective,,,3,Fall
+CMSC 313,Computer Organization & Assembly Language Programming,"CMSC 202",§,3,Spring
+MATH 221,Introduction to Linear Algebra,"MATH 152",,3,Spring
+SCI 2,Science Sequence II,"SCI 1",S non-lab GEP,4,Spring
+SCI LAB,Science Lab,,GEP,2,Spring
+SS GEP,Social Sciences General Education,,GEP,3,Spring
+CMSC 411,Computer Architecture,"CMSC 313",,3,Fall
+CMSC 4XX,CMSC Upper-Level Elective,"Varies by course",,3,Fall
+STAT 355,Introduction to Probability & Statistics for Scientists & Engineers,"MATH 152",§,4,Fall
+CMSC 421,Principles of Operating Systems,"CMSC 313",,3,Spring
+CMSC 4XX,CMSC Upper-Level Elective,"Varies by course",,3,Spring
+CMSC 4XX,CMSC Upper-Level Elective,"Varies by course",,3,Spring
+AH GEP,Arts & Humanities General Education,,GEP,3,Spring
+C GEP,Communication General Education,,GEP,3,Spring
+CMSC 441,Design & Analysis of Algorithms,"CMSC 341, MATH 152",,3,Fall
+CMSC 447,Software Engineering I,"CMSC 341",,3,Fall
+UPPER 1,Upper-Level Elective,,,3,Fall
+ELECT 2,Elective,,,3,Fall
+ELECT 3,Elective,,,3,Fall
+CMSC 4XX,CMSC Upper-Level Elective,"Varies by course",,3,Spring
+CMSC 4XX,CMSC Upper-Level Elective,"Varies by course",,3,Spring
+ELECT 4,Elective,,,3,Spring
+ELECT 5,Elective,,,3,Spring
+ELECT 6,Elective,,,2,Spring
+IS 295,Intermediate Business Applications,"IS 125, IS 202",,3,Fall
+ECON 121,Principles of Accounting I,,,3,Fall
+IS 300,Management Information Systems,"IS 295",§,3,Spring
+IS 320,Advanced Business Applications,"IS 295",,3,Spring
+ECON 122,Principles of Accounting II,"ECON 121",,3,Spring
+Foreign Language 201,Foreign Language II,,,4,Spring
+IS 303,Fund. of Human Computer Interaction,"IS 300",,3,Fall
+IS 325,Introduction to Management Science,"IS 300, MATH 155",,3,Spring
+STAT 351,Applied Stat. for Business & Econ.,"MATH 155",,4,Spring
+IS 350,Business Communications Systems,"IS 300, ENGL GEP",,3,Fall
+ENGL 393,Technical Writing,"ENGL GEP",WI,3,Fall
+IS 440,Integrating Tech. in Bus. Processes,"IS 350, IS 4XX",,3,Spring
+MGMT 489,Seminar in Mgmt. & Admin.,"MGMT 210",,3,Spring
+IS 438,Project Management,"IS 350",,3,Spring
+IS 202,System Analysis Methods,,,3,Spring
+MGMT 210,The Practice of Management,,§,3,Spring
+ECON 102,Principles of Macroeconomics,,SS GEP,3,Spring
+IS 125,Info. Systems Logic & Structured Design,,,4,Fall
+ECON 101,Principles of Microeconomics,,SS GEP,3,Fall
+MATH 155,Applied Calculus,,MATH GEP §,4,Fall
+ENES 101,Intro. to Engineering (see gateway for grade requirements),,§ ‡,4,Fall
+CHEM 102,Princ. of Chem. II (see gateway for grade requirements),"CHEM 101",§ ‡,4,Spring
+CHEM 102L,Introductory Chemistry Lab,"CHEM 102",§,2,Spring
+PHYS 121,Introductory Physics I,,,4,Spring
+MATH 152,Calculus and Analytic Geometry II,"MATH 151",§ ‡,4,Spring
+ENME 110,Statics,"PHYS 121",,3,Spring
+ENCH 215,Chemical Engineering Analysis,"MATH 152, CHEM 102",§ ‡,3,Fall
+CHEM 351,Organic Chemistry I,"CHEM 102",,3,Fall
+MATH 251,Multivariable Calculus,"MATH 152",,4,Fall
+PHYS 122,Introductory Physics II,"PHYS 121",,4,Fall
+ENCH 225L,Chemical Engineering Problem Solving & Experiment Design Lab,"ENCH 215",,4,Spring
+CHEM 351L,Organic Chemistry Lab,"CHEM 351",,2,Spring
+MATH 225,Introduction to Differential Equations,"MATH 152",§,3,Spring
+ENCH 300,Chemical Process Thermodynamics,"ENCH 215, CHEM 351",§,3,Fall
+ENCH 425,Transport I: Fluids,"ENCH 300, MATH 225",§,3,Fall
+CHEM 301,Physical Chemistry I,"CHEM 102, MATH 225",,4,Fall
+CHEM 311L,Advanced Laboratory I,"CHEM 351",,3,Fall
+ENCH 427,Transport Processes II: Mass Transfer,"ENCH 425",§,3,Spring
+ENCH 440,Chemical Engineering Kinetics,"ENCH 300, CHEM 301",§,3,Spring
+ENCH 442,Chemical Engineering Systems Analysis,"ENCH 425, MATH 225",,3,Spring
+CHEM 302,Physical Chemistry II,"CHEM 301",,3,Spring
+ENCH 444,Process Engr. Economics & Design,"ENCH 442",,3,Fall
+ENCH 445,Separation Processes,"ENCH 425",,3,Fall
+ENCH 437L,Chemical Engineering Lab,"ENCH 442",WI,3,Fall
+ENCH 446,Process Engr. Economics & Design II,"ENCH 444",,4,Spring
+IS 147,Introduction to Computer Programming,,§ ‡,3,Spring
+IS 247,Computer Programming II,"IS 147",,3,Fall
+IS 300,Management Information Systems,"IS 247",§ ‡,3,Fall
+IS 310,Software & Hardware Concepts,"IS 247",§ ‡,3,Spring
+IS 410,Introduction to Database Design,"IS 300",,3,Fall
+IS 450,Data Communications & Networks,"IS 300",,3,Fall
+IS 420,Database Application Development,"IS 410",,3,Spring
+IS 451,Network Design & Management,"IS 450",,3,Spring
+IS 425,Decision Support Systems,"IS 420",,3,Fall
+IS 436,Structured Systems Analysis & Design,"IS 425",,3,Spring
