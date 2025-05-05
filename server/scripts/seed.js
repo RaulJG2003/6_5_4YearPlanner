@@ -3,31 +3,25 @@ const connectDB = require("../config/db");
 const Course = require("../models/Course");
 const csvtojson = require("csvtojson"); 
 
-var seedCourses = []; // our json
+//var seedCourses = []; // our json
 
 //populates a json 
-function popJSON()
-{
+function popJSON() {
   const fileName = "classes.csv"; 
-  csvtojson().fromFile(fileName).then((source) =>
-  {
-    //goes through the source which has been populated from the csv converts to rows to put in seedCourses
-    for(var i = 0; i <source.length;i ++)
-    {
-      //the format for the JSON
-      var oneRow ={
-        code: source[i]["Class"],
-        name: source[i]["Name"],
-        prerequisites: source[i]["PreReq"],
-        credits: source[i]["Credits"],
-        attributes: source[i]["Attributes"],
-        semesterOffered:source[i]["Semester Offerd"],
-      }
-      seedCourses.push(oneRow);
-    }
+  return csvtojson().fromFile(fileName).then((source) => {
+    const parsed = source.map(row => ({
+      code: row["Class"],
+      name: row["Name"] || undefined,
+      prerequisites: row["PreReq"] ? row["PreReq"].split(',') : [],
+      credits: row["Credits"] ? Number(row["Credits"]) : undefined,
+      attributes: row["Attributes"] || undefined,
+      semesterOffered: row["Semester Offerd"]
+        ? row["Semester Offerd"].split(',').map(s => s.trim())
+        : [],
+    }));
     console.log("CSV translated!");
-  })
-
+    return parsed;
+  });
 }
 //keeping just in case
 //const seedCourses = [
@@ -38,8 +32,8 @@ function popJSON()
 //];
 
 const seedDB = async () => {
-  popJSON();
   await connectDB();
+  const seedCourses = await popJSON(); // ✅ Wait for CSV parsing
   await Course.deleteMany({});
   await Course.insertMany(seedCourses);
   console.log("Database Seeded! ✅");

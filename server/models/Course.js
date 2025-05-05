@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const CourseSchema = new mongoose.Schema({
-  code: { type: String, required: true, unique: true }, // Course Code (e.g., "CMSC 201")
-  name: { type: String, required: true },              // Course Name
-  credits: { type: Number, required: true },           // Credit Hours
-  prerequisites: { type: [String], default: [] },      // Array of prerequisite course codes
-  semesterOffered: { type: [String], default: [] }     // Semesters offered (e.g., ["Fall", "Spring"])
+  code: { type: String, default: "" }, // Default to empty string
+  name: { type: String, default: "" },               // Default to empty string
+  credits: { type: Number, default: 3 },             // Default to 0 credits
+  prerequisites: { type: [String], default: [] },                    // Default to empty array
+  semesterOffered: { type: [String], default: [] }                   // Default to empty array
 });
 
 module.exports = mongoose.model("Course", CourseSchema);

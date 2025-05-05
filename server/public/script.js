@@ -1,18 +1,23 @@
 let allCourses = [];
 let requirements = [];
+
 const csvPaths = {
     bta: "/bta.csv",
-    cs: "/compsci.csv", 
+    cs: "/compsci.csv",
     is: "/infosys.csv",
     cheme: "/chemcial engineering/ceGen.csv",
+};
+const planPaths = {
+    cs: "/csGP.csv",
 };
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
-    updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
+        updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
+
 
         const savedCourses = JSON.parse(localStorage.getItem("selectedCourses") || "[]");
 
@@ -25,6 +30,7 @@ $(document).ready(() => {
                 }
             });
         }
+
     });
     // Puts the course rendering into a function so that it can be used in different ways
     function renderCourses(courseList) {
@@ -73,13 +79,13 @@ $(document).ready(() => {
 
     $("#search-input").on("input", function () {
         const query = $(this).val().toLowerCase().trim();
-    
+
         // Get all currently used course codes
         const usedCodes = new Set();
         $(".semester .course-button").each(function () {
             usedCodes.add($(this).data("code"));
         });
-    
+
         // Filter out used courses from search
         const filteredCourses = allCourses.filter(course =>
             !usedCodes.has(course.code) && (
@@ -87,19 +93,19 @@ $(document).ready(() => {
                 course.name.toLowerCase().includes(query)
             )
         );
-    
+
         renderCourses(filteredCourses);
     });
 
     function updateCreditsForSemester(semesterDiv) {
         let total = 0;
-    
+
         // Sum credits from all class-containers inside this semester
         semesterDiv.find(".class-container").each(function () {
             const credits = parseInt($(this).find(".course-button").data("credits"));
             total += isNaN(credits) ? 0 : credits;
         });
-    
+
         // Update the span that appears BEFORE the semester div
         const creditSpan = semesterDiv.closest(".semester-block").find(".credit-total");
         if (creditSpan.length) {
@@ -116,20 +122,20 @@ $(document).ready(() => {
             semesterDiv.closest(".semester-block").append('<div class="credit-warning" style="color: gold;">Warning: More than 15 credits a semester is not recommended!</div>');
         }
     }
+   
+    function prerequisitesMet(course, semesterId) {
 
-    function prerequisitesMet(course, semesterId){
-        
         if (!course || !Array.isArray(course.prerequisites)) return true;
 
         // If no prerequisites or only empty strings, it's considered met
         const filteredPrereqs = course.prerequisites.filter(p => p.trim() !== "");
         if (filteredPrereqs.length === 0) return true;
-        
+
         const currentSemesterIndex = parseInt(semesterId.split('-')[1]);
 
         // Gather all the courses from semesters before the current one
         let takenCourses = new Set();
-        for (let i = 1; i < currentSemesterIndex; i++){
+        for (let i = 1; i < currentSemesterIndex; i++) {
             $(`#semester-${i} .course-button`).each(function () {
                 takenCourses.add($(this).data("code"));
             });
@@ -147,19 +153,19 @@ $(document).ready(() => {
             const original = ui.draggable;
             const button = original.find(".course-button");
             const code = button.data("code");
-        
+
             // Prevent duplicates by checking if it already exists in the semester
             if (semester.find(`[data-code='${code}']`).length) return;
-        
+
             // Remove from course offered section if it was already there
             $(`#course-buttons .class-container:has([data-code='${code}'])`).remove();
-        
+
             // If there was a previous semester, remove it from that semester
             const prevSemester = ui.helper.closest(".semester");
             if (prevSemester.length) {
                 prevSemester.find(`.class-container:has([data-code='${code}'])`).remove();
             }
-        
+
             // Check if prerequisites are met
             const courseObj = allCourses.find(c => c.code === code);
             if (!prerequisitesMet(courseObj, semester.attr("id"))) {
@@ -171,18 +177,18 @@ $(document).ready(() => {
                 original.find(".course-button").css("background-color", "gold");
                 original.find(".error-msg").remove();
             }
-        
+
             // Add the "X" remove button only if it hasn't been added yet
             if (!button.find(".remove-course").length) {
                 button.append(` <button class="remove-course">X</button>`);
             }
-        
+
             // Bind the remove button functionality
             button.find(".remove-course").on("click", function () {
                 original.remove();
                 updateCreditsForSemester(semester);
             });
-        
+
             // Re-bind the dropdown toggle click functionality
             button.off("click").on("click", function () {
                 if (!$(this).hasClass("dragging")) {
@@ -190,7 +196,7 @@ $(document).ready(() => {
                     $(this).siblings(".dropdown-content").toggle();
                 }
             });
-        
+
             // Reapply draggable only to the new element (if necessary)
             original.draggable({
                 helper: "clone",
@@ -202,13 +208,13 @@ $(document).ready(() => {
                     button.removeClass("dragging");
                 }
             });
-        
+
             // Append the cloned element to the semester
             semester.append(original);
-        
+
             // Update credit totals for the semester
             updateCreditsForSemester(semester);
-        }        
+        }
     });
 
     // Optional: Handle "X" button to remove course
@@ -229,7 +235,7 @@ $(document).ready(() => {
 
         $("#course-buttons").append(newClassContainer);
 
-       
+
         // Make draggable again with full behavior
         newClassContainer.draggable({
             helper: "clone",
@@ -268,6 +274,34 @@ $(document).ready(() => {
         const summary = checkRequirements(plannedCourses);
         displayRequirementSummary(summary);
     });
+
+    let major = "cs"; // Default major (can be changed dynamically)
+
+$("#generate-plan").on("click", function () {
+    console.log("Loading plan for major:", major);
+
+    // Get the CSV path based on the selected major
+    const csvPath = planPaths[major];
+    if (!csvPath) {
+        alert("No plan available for the selected major!");
+        return;
+    }
+
+    // Fetch and parse the CSV directly
+    Papa.parse(csvPath, {
+        download: true,  // Required to fetch CSV from URL
+        header: true,   // Treat first row as headers
+        dynamicTyping: true,
+        complete: function (results) {
+            console.log("Plan loaded successfully:", results.data);
+            loadFourYearPlan(results.data);
+        },
+        error: function (error) {
+            console.error("Error loading CSV:", error);
+            alert("Failed to load the plan. Check console for details.");
+        }
+    });
+});
 });
 
 function loadMajorRequirements(csvUrl) {
@@ -284,6 +318,121 @@ function loadMajorRequirements(csvUrl) {
             console.error("CSV parsing error:", err);
         }
     });
+}
+function loadFourYearPlan(planArray) {
+    // Clear existing courses
+    $(".semester").empty();
+
+    // Group by numeric semester ID (1–8)
+    const semesterGroups = {};
+    planArray.forEach(entry => {
+        const semester = parseInt(entry.Semester); // expect 1–8
+        if (!semesterGroups[semester]) {
+            semesterGroups[semester] = [];
+        }
+        semesterGroups[semester].push(entry);
+    });
+
+    // Add each course to its semester
+    for (const semester in semesterGroups) {
+        const semesterId = `#semester-${semester}`;
+        const semesterDiv = $(semesterId);
+
+        if (semesterDiv.length === 0) {
+            console.warn(`Semester div not found: ${semesterId}`);
+            continue;
+        }
+
+        semesterGroups[semester].forEach(entry => {
+            const courseCode = entry.CourseCode.trim();
+            if (!courseCode) return;
+
+            // Try to find the course in `allCourses`, or create a minimal version if not found
+            let courseData = allCourses.find(c => c.code === courseCode);
+            if (!courseData) {
+                console.warn(`Course not found: ${courseCode}. Creating a minimal entry.`);
+                courseData = {
+                    code: courseCode,
+                    name: "",  // Default name
+                    credits: 3,              // Default credits (adjust as needed)
+                    prerequisites: [],       // Empty prerequisites
+                    semesterOffered: []      // No semester info
+                };
+                // Optional: Add the new course to `allCourses` for future reference
+                allCourses.push(courseData);
+            }
+
+            const button = $(`<div class="course-button" data-code="${courseData.code}" data-credits="${courseData.credits}">`)
+                .text(`${courseData.code} - ${courseData.name}`)
+                .click(function () {
+                    if (!$(this).hasClass("dragging")) {
+                        $(this).toggleClass('active');
+                        $(this).siblings(".dropdown-content").toggle();
+                    }
+                });
+
+            const dropdown = $(`<div class="dropdown-content">`).html(`
+                <strong>Code:</strong> ${courseData.code} <br>
+                <strong>Name:</strong> ${courseData.name} <br>
+                <strong>Credits:</strong> ${courseData.credits} <br>
+                <strong>Prerequisites:</strong> ${courseData.prerequisites?.join(", ") || "None"} <br>
+                <strong>Semester Offered:</strong> ${courseData.semesterOffered?.join(", ") || ""}
+            `);
+
+            const classContainer = $("<div>")
+                .addClass("class-container")
+                .append(button)
+                .append(dropdown);
+
+            button.append(` <button class="remove-course">X</button>`)
+                .find(".remove-course")
+                .on("click", function (e) {
+                    e.stopPropagation();
+                    
+                    let total = 0; 
+
+                    classContainer.remove();
+                    
+                    semesterDiv.find(".class-container").each(function () {
+                        const credits = parseInt($(this).find(".course-button").data("credits"));
+                        total += isNaN(credits) ? 0 : credits;
+                    });
+
+                    // Update the span that appears BEFORE the semester div
+                    const creditSpan = semesterDiv.closest(".semester-block").find(".credit-total");
+                    if (creditSpan.length) {
+                        creditSpan.text("Credits: " + total);
+                    }
+                });
+
+            classContainer.draggable({
+                helper: "clone",
+                revert: "invalid",
+                start: function () {
+                    button.addClass("dragging");
+                },
+                stop: function () {
+                    button.removeClass("dragging");
+                }
+            });
+
+            semesterDiv.append(classContainer);
+
+            let total = 0;
+
+            // Sum credits from all class-containers inside this semester
+            semesterDiv.find(".class-container").each(function () {
+                const credits = parseInt($(this).find(".course-button").data("credits"));
+                total += isNaN(credits) ? 0 : credits;
+            });
+
+            // Update the span that appears BEFORE the semester div
+            const creditSpan = semesterDiv.closest(".semester-block").find(".credit-total");
+            if (creditSpan.length) {
+                creditSpan.text("Credits: " + total);
+            }
+        });
+    }
 }
 
 function getPlannedCourses() {
@@ -378,11 +527,29 @@ function displayRequirementSummary(requirements) {
 
 function updateDegreeAndLoadCSV(selectedMajor) {
     const csvPath = csvPaths[selectedMajor];
+    const planPath = planPaths[selectedMajor];
+
+    if (!planPath) {
+        alert("No plan found.");
+        return;
+    }
+
+    Papa.parse(planPath, {
+        download: true,
+        header: true,
+        complete: function (results) {
+            console.log("Parsed Plan Data:", results.data);
+            loadFourYearPlan(results.data);
+        },
+        error: function (err) {
+            console.error("Error parsing plan:", err);
+        }
+    });
 
     if (csvPath) {
-        loadMajorRequirements(csvPath);  // Load the corresponding CSV
+        loadMajorRequirements(csvPath);
     } else {
-        console.error("CSV path not found for degree:", major);
+        console.error("CSV path not found for degree:", selectedMajor);
     }
+    updateAllSemesterCredits();
 }
-
