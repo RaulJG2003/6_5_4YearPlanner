@@ -5,18 +5,22 @@ const csvPaths = {
     bta: "/bta.csv",
     cs: "/compsci.csv",
     is: "/infosys.csv",
-    cheme: "/chemcial engineering/ceGen.csv",
+    cheme: "/chemical engineering/ceTrad.csv",
 };
-const planPaths = {
+const planPaths ={
+    bta: "/btaGP.csv",
     cs: "/csGP.csv",
-};
+    is: "/isGP.csv",
+    cheme: "/chemeGP.csv"
+
+}
 
 $(document).ready(() => {
     const buttonContainer = $("#course-buttons");
     $.get("/api/courses", function (data) {
         allCourses = data;
         renderCourses(allCourses);
-        updateDegreeAndLoadCSV("cs"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
+        updateDegreeAndLoadCSV("cheme"); // SUPPOSED TO GET VALUE FROM DROPDOWN, NEEDS TO BE CHANGED
 
 
         const savedCourses = JSON.parse(localStorage.getItem("selectedCourses") || "[]");
@@ -312,7 +316,7 @@ function loadMajorRequirements(csvUrl) {
         complete: function (results) {
             requirements = results.data;
             console.log("CSV loaded from:", csvUrl);
-            console.log("Parsed CSV Data:", results.data);  // ← This logs the data to console
+            console.log("Parsed CSV Data:", results.data); 
         },
         error: function (err) {
             console.error("CSV parsing error:", err);
